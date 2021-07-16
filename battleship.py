@@ -28,7 +28,7 @@ else:
     elif board_size == 8:
         number_of_ships = 4
     else:
-        number_of_ships = 56
+        number_of_ships = 5
 
 
 print(f'Number of ships in game: {number_of_ships}\n')

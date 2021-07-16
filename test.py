@@ -3,35 +3,38 @@ from random import randint
 
 # Generate board by taking user input for board size, allowing it to be different sizes, using a for loop
 # Validate user input
-#board = []
+board = []
 
 
 def set_board_size():
     """
-    Ask for user input to set the size of the board, which will
-    also determine the number of ships and the number of steps allowed for the game.
+    Asks for user input to set the size of the board.
     The while loop will run until the user enters a valid input.
     """
     while True:
         print('Choose number 4, 6, 8, 10 to set size of the board:\n')
 
         board_size = input('Enter your number here: \n')
+        number_of_ships = int(board_size)-3 
         if validate_board_size(board_size):
             print(f'Your board size is {board_size} x {board_size}.\n')
-           # for i in range(int(board_size)):
-           #     board.append('O')
-            #    print(board)
+            print(f'Number of ships is {number_of_ships}')
             board = build_board(board_size)
-            for b in board:
-                print(*b)
-            break
+            for b in board: 
+                print(*b)  #  prints out board using the * symbol, which enables
+            break          #  list elements to be printed on a single line with spaces.
 
 
     return board_size
-    
-def build_board(board_size): 
+
+
+def build_board(board_size):
+    """
+    returns board as lists in brackets, separated by commas. 
+    Number of list elements depends on validated user input.
+    """ 
     return [['O' for i in range(int(board_size))] for i in range(int(board_size))]  
-    
+  
 
 def validate_board_size(board_size):
     """
@@ -51,7 +54,13 @@ def validate_board_size(board_size):
     return True  
 
 
-set_board_size()
+set_board_size() 
+
+
+
+
+
+
 
 
 
