@@ -1,9 +1,7 @@
 # Import random package in order to be able to generate random integers
 from random import randint
 
-# Generate board, allowing it to be different sizes, using a for loop
-
-
+# Generate board by taking user input for board size, allowing it to be different sizes, using a for loop
 # Validate user input
 board = []
 
@@ -19,7 +17,7 @@ def set_board_size():
 
         board_size = input('Enter your number here: \n')
         if validate_board_size(board_size):
-            print(f'Ok, your board size is {board_size} x {board_size}')
+            print(f'Your board size is {board_size} x {board_size}.\n')
             for i in range(int(board_size)):
                 board.append('O')
                 print('O')
@@ -45,7 +43,7 @@ def validate_board_size(board_size):
         print(f'Oops, you are not able to use {board_size} to set your board size, please try again. \n')
         return False
     else:
-	    print('There are no problems.')
+	    print('You are ok to play!\n')
     return True  
 
 
