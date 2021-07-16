@@ -3,7 +3,7 @@ from random import randint
 
 # Generate board by taking user input for board size, allowing it to be different sizes, using a for loop
 # Validate user input
-board = []
+#board = []
 
 
 def set_board_size():
@@ -18,16 +18,20 @@ def set_board_size():
         board_size = input('Enter your number here: \n')
         if validate_board_size(board_size):
             print(f'Your board size is {board_size} x {board_size}.\n')
-            for i in range(int(board_size)):
-                board.append('O')
-                print('O')
+           # for i in range(int(board_size)):
+           #     board.append('O')
+            #    print(board)
+            board = build_board(board_size)
+            for b in board:
+                print(*b)
             break
 
 
     return board_size
     
+def build_board(board_size): 
+    return [['O' for i in range(int(board_size))] for i in range(int(board_size))]  
     
-
 
 def validate_board_size(board_size):
     """
