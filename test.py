@@ -104,32 +104,40 @@ ship_col = random_col(board) #places ship column on the board
 
 # Ask user for input to guess the row
 
-guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
-guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
-
 print(f'Ship row: {ship_row}\n')
 print(f'Ship column: {ship_col}\n')
 
-if ship_row == guess_row and ship_col == guess_col:
-    board[guess_row-1][guess_col-1] = 'H'
-    print_board(board)
-    print('Hit!\n')
 
-else:
-    if guess_row not in range(int(board_size)+1) or guess_col not in range(int(board_size)+1):
+for i in range(int(board_size) * 4, 0, -1):
+    
+
+    guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
+    guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
+
+    if ship_row == guess_row and ship_col == guess_col:
+        board[guess_row-1][guess_col-1] = 'H'
+        print_board(board)
+        print('Hit!\n')
+        i -= 1
+        print(f'Number of steps left: {i}')
+
+        if i == 1:
+            print('GAME OVER!')
+            break
+
+    elif guess_row not in range(int(board_size)+1) or guess_col not in range(int(board_size)+1):
         print('OOps, that is outside the ocean!')
+
+    elif board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
+        print('You have made that guess already!\n')
     else:
         board[guess_row-1][guess_col-1] = 'X'
-        print_board(board)
+        print_board(board) 
         print('Miss!\n')
+        i -= 1
+        print(f'Number of steps: {i}')
 
-
-
-
-
-
-
-
-
-
+        if i == 1:
+            print('GAME OVER!')
+            break
 
