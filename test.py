@@ -46,6 +46,13 @@ def validate_board_size(board_size):
 
 
 while True:
+    """
+    The below code was originally in a function called set_board_size(). 
+    However, the variables board and board_size must be accessed throughout the 
+    whole programme, and declaring them as global variables only partially worked.
+    Therefore, they are used within a while loop, which also has the build_board()
+    and print_board() functions inside it.
+    """
     print('Choose number 4, 6, 8, 10 to set size of the board:\n')
     board_size = input('\nEnter your number here: \n')
     if validate_board_size(board_size):
@@ -66,17 +73,55 @@ set_number_of_ships()
 
 
 def random_row(board):
-    print('Hi')
-    return randint(0, len(board)-1)
+    """
+    Using the randint()method from the random library,
+    I generate a random element in the board[] list in the board rows. 
+    This will be necessary for the user guess and the
+    ship placement on the board.
+    Based on https://www.youtube.com/watch?v=7Ki_2gr0rsE&t=300s
+
+    """
+    return randint(1, len(board))
 
 
 def random_col(board):
-    print('Hello')
-    return randint(0, len(board[0])-1)
+    """
+    Using the randint()method from the random library,
+    I generate a random element in the board[] list in the board columns. 
+    This will be necessary for the user guess and the
+    ship placement on the board.
+    Based on https://www.youtube.com/watch?v=7Ki_2gr0rsE&t=300s
+
+    """
+    return randint(1, len(board))
     
 
 random_row(board)
 random_col(board)
+
+ship_row = random_row(board) #places ship row on the board
+ship_col = random_col(board) #places ship column on the board
+
+# Ask user for input to guess the row
+
+guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
+guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
+
+print(f'Ship row: {ship_row}\n')
+print(f'Ship column: {ship_col}\n')
+
+if ship_row == guess_row and ship_col == guess_col:
+    board[guess_row-1][guess_col-1] = 'H'
+    print_board(board)
+    print('Hit!\n')
+
+else:
+    if guess_row not in range(int(board_size)+1) or guess_col not in range(int(board_size)+1):
+        print('OOps, that is outside the ocean!')
+    else:
+        board[guess_row-1][guess_col-1] = 'X'
+        print_board(board)
+        print('Miss!\n')
 
 
 
