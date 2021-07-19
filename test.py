@@ -111,7 +111,7 @@ print(f'Ship column: {ship_col}\n')
 def make_guesses():
 
     for i in range(int(board_size) * 4 - 5, 0, -1):
-        print(f'Number of steps left: {i}')    
+        print(f'Number of guesses left: {i}')    
         guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
         guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
 
@@ -130,6 +130,7 @@ def make_guesses():
 
         elif board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
             print('You have made that guess already!\n')
+        
         else:
             board[guess_row-1][guess_col-1] = 'X'
             print_board(board) 
@@ -141,3 +142,32 @@ def make_guesses():
                 break
 
 make_guesses()
+
+
+# ship Class
+class Ship:
+
+    def __init__(self, size, orientation, location):
+        self.size = size
+
+        if orientation == 'horizontal' or orientation == 'vertical':
+            self.orientation = orientation
+        
+        else:
+            raise ValueError('Orientation must be either "horizontal" or "vertical"')
+
+        if orientation == 'horizontal':
+            if location['row'] in range(1, int(board_size)):
+                self.coordinates = []
+
+                for index in range(size):
+                    if location['col'] + index in range(int(1, board_size)):
+                        self.coordinates.append({'row': location['row'], 'col': location['col'] + index})
+                    else: 
+                        raise IndexError('Column is not in range')
+            else: 
+                raise IndexError('Row is not in range')
+        
+        elif orientation == 'vertical':
+            if location['col'] in range(1, int(board_size)):
+                self.coordinates = []              
