@@ -159,7 +159,14 @@ def random_col(board):
 random_row(board)
 random_col(board)
 
-ship_row = random_row(board) #places ship row on the board
+
+#ship_row = random_row(board) #places ship row on the board
+for i in range(min_ship_size, max_ship_size):
+    if int(board_size) == 4:
+        min_ship_size = 1
+        max_ship_size = 2
+        ship_row = random_row(board)
+
 ship_col = random_col(board) #places ship column on the board
 
 # Ask user for input to guess the row
@@ -264,7 +271,21 @@ while True:
         break
 
 
+*******
+def place_ships():
+    
+    for i in range(1, number_of_ships + 1):
+        global ship_row
+        ship_row = random_row(board)
+        for ship_row in range(1 , 2):
+            print('i')
+        for k in range(1, number_of_ships +1):
+            global ship_col
+            ship_col = random_col(board)
+            print(ship_row, ship_col)
 
+
+place_ships()  
 
 
 

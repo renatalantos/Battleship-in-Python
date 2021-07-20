@@ -2,8 +2,44 @@
 from random import randint
 import math
 
+class Ship:
+
+    def __init__(self, size, orientation, location):
+        self.size = size
+
+        if orientation == 'horizontal' or orientation == 'vertical':
+            self.orientation = orientation
+        
+        else:
+            raise ValueError('Orientation must be either "horizontal" or "vertical"')
+
+        if orientation == 'horizontal':
+            if location['row'] in range(1, int(board_size)):
+                self.coordinates = []
+
+                for index in range(size):
+                    if location['col'] + index in range(int(1, board_size)):
+                        self.coordinates.append({'row': location['row'], 'col': location['col'] + index})
+                    else: 
+                        raise IndexError('Column is not in range')
+            else: 
+                raise IndexError('Row is not in range')
+        
+        elif orientation == 'vertical':
+            if location['col'] in range(1, int(board_size)):
+                self.coordinates = []
+
+                for index in range(size):
+                    if location['row'] + index in range(int(1, board_size)):
+                        self.coordinates.append({'row': location['row'] + index, 'col': location['col']})
+                    else: 
+                        raise IndexError('Row is not in range')
+            else: 
+                raise IndexError('Column is not in range')   
 # Generate board by taking user input for board size, allowing it to be different sizes, using a for loop
 # Validate user input
+
+
 global board
 board = []
 # global board_size
@@ -72,6 +108,9 @@ def set_number_of_ships():
 set_number_of_ships()
 
 
+    
+
+
 def random_row(board):
     """
     Using the randint()method from the random library,
@@ -102,6 +141,10 @@ random_col(board)
 ship_row = random_row(board) #places ship row on the board
 ship_col = random_col(board) #places ship column on the board
 
+
+      
+
+
 # Ask user for input to guess the row
 
 print(f'Ship row: {ship_row}\n')
@@ -109,7 +152,7 @@ print(f'Ship column: {ship_col}\n')
 
 
 for i in range(int(board_size) * 4 - 5, 0, -1):
-    print(f'Number of guesses left: {i}') 
+    print(f'Number of guesses left: {i}')
 
     global guess_row
     guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
@@ -126,7 +169,10 @@ for i in range(int(board_size) * 4 - 5, 0, -1):
             break
 
     elif guess_row not in range(1, int(board_size)+1) or guess_col not in range(1, int(board_size)+1):
-       print('OOps, that is outside the ocean!')
+        print('OOps, that is outside the ocean!')
+        if i == 1:
+            print('GAME OVER!')
+            break
 
     elif board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
         print('You have made that guess already!\n')
