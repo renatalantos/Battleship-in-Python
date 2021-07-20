@@ -1,4 +1,7 @@
 # ship Class
+board_size = input('Enter board size')
+size = 3
+
 class Ship:
 
     def __init__(self, size, orientation, location):
@@ -32,4 +35,4 @@ class Ship:
                     else: 
                         raise IndexError('Row is not in range')
             else: 
-                raise IndexError('Column is not in range')              
+                raise IndexError('Column is not in range')            

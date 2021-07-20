@@ -35,7 +35,9 @@ class Ship:
                     else: 
                         raise IndexError('Row is not in range')
             else: 
-                raise IndexError('Column is not in range')   
+                raise IndexError('Column is not in range')
+
+
 # Generate board by taking user input for board size, allowing it to be different sizes, using a for loop
 # Validate user input
 
@@ -108,9 +110,6 @@ def set_number_of_ships():
 set_number_of_ships()
 
 
-    
-
-
 def random_row(board):
     """
     Using the randint()method from the random library,
@@ -135,12 +134,28 @@ def random_col(board):
     return randint(1, len(board))
     
 
-random_row(board)
-random_col(board)
+#random_row(board)
+#random_col(board)
 
 ship_row = random_row(board) #places ship row on the board
 ship_col = random_col(board) #places ship column on the board
 
+
+def place_ships():
+    
+    for a in range(1, number_of_ships + 1):
+        print('a')
+    for b in range(1, number_of_ships):
+        print('b')
+    for c in range(1, number_of_ships-1):
+        print('c')
+    for d in range(1, number_of_ships-2):
+        print('d')
+    for e in range(1, number_of_ships-3):
+        print('e')
+
+
+place_ships()  
 
       
 
@@ -188,6 +203,5 @@ for i in range(int(board_size) * 4 - 5, 0, -1):
         if i == 1:
             print('GAME OVER!')
             break
-
 
 
