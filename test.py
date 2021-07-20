@@ -2,42 +2,6 @@
 from random import randint
 import math
 
-class Ship:
-
-    def __init__(self, size, orientation, location):
-        self.size = size
-
-        if orientation == 'horizontal' or orientation == 'vertical':
-            self.orientation = orientation
-        
-        else:
-            raise ValueError('Orientation must be either "horizontal" or "vertical"')
-
-        if orientation == 'horizontal':
-            if location['row'] in range(1, int(board_size)):
-                self.coordinates = []
-
-                for index in range(size):
-                    if location['col'] + index in range(int(1, board_size)):
-                        self.coordinates.append({'row': location['row'], 'col': location['col'] + index})
-                    else: 
-                        raise IndexError('Column is not in range')
-            else: 
-                raise IndexError('Row is not in range')
-        
-        elif orientation == 'vertical':
-            if location['col'] in range(1, int(board_size)):
-                self.coordinates = []
-
-                for index in range(size):
-                    if location['row'] + index in range(int(1, board_size)):
-                        self.coordinates.append({'row': location['row'] + index, 'col': location['col']})
-                    else: 
-                        raise IndexError('Row is not in range')
-            else: 
-                raise IndexError('Column is not in range')
-
-
 # Generate board by taking user input for board size, allowing it to be different sizes, using a for loop
 # Validate user input
 
@@ -137,34 +101,73 @@ def random_col(board):
 #random_row(board)
 #random_col(board)
 
+
 ship_row = random_row(board) #places ship row on the board
 ship_col = random_col(board) #places ship column on the board
+ship_list = []
 
 
-def place_ships():
-    
+def generate_ships_by_size():
+    """
+    Generates ships by different sizes, with incrementing sizes and numbers.
+    The ship number is half of the board size.
+    The for loop increments the size, so e.g. if board_size = 6,
+    number of ships is 3, their sizes are 1, 2, 3.
+    """
+
+    #global ship_row
+    #global ship_col
     for a in range(1, number_of_ships + 1):
+        
         print('a')
+        print(a)
+        ship_list.append(a)
+        print(ship_list)
+        
     for b in range(1, number_of_ships):
+        
         print('b')
+        print(b)
+        ship_list.append(b)
+        print(ship_list)
+        
     for c in range(1, number_of_ships-1):
         print('c')
+        print(c)
+        ship_list.append(c)
+        print(ship_list)
     for d in range(1, number_of_ships-2):
+        print(d)
         print('d')
+        ship_list.append(d)
+        print(ship_list)
     for e in range(1, number_of_ships-3):
+        print(e)
         print('e')
+        ship_list.append(e)
+        print(ship_list)
 
 
-place_ships()  
+generate_ships_by_size() 
 
-      
+
+
+def place_ships_on_board():
+    """
+    Add ship_row and ship_col as index to elements in ship_list.
+    They are incremented and validated
+    """
+
+place_ships_on_board()    
+
+
+#def place_ships():place_ships()
+
+print(f'Ship row: {ship_row}\n')
+print(f'Ship column: {ship_col}\n')     
 
 
 # Ask user for input to guess the row
-
-print(f'Ship row: {ship_row}\n')
-print(f'Ship column: {ship_col}\n')
-
 
 for i in range(int(board_size) * 4 - 5, 0, -1):
     print(f'Number of guesses left: {i}')
