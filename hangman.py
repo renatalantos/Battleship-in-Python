@@ -6,8 +6,9 @@ def display_welcome_message():
     print('Hello! Welcome! Play my hangman game!\n')
     name = input('Please enter your name: \n').upper()
     print(f'Thank you, {name}! Hope you are ready to play!')
- 
-    
+        
+
+
 def create_random_word():
 
     word = random.choice(word_list)
@@ -20,6 +21,8 @@ def play_game(word):
     letters_guessed = []
     guess_made = False
     guesses_left = 6
+    print(display_hangman(guesses_left))
+    
 
     while not guess_made and guesses_left > 0: 
         guess_letter = input('Please guess a letter: \n').upper()
@@ -31,6 +34,7 @@ def play_game(word):
             elif guess_letter not in word:
                 print(f'Sorry, {guess_letter} is not the word!\n')
                 guesses_left -= 1
+                print(display_hangman(guesses_left))
                 letters_guessed.append(guess_letter)
            
             else:
@@ -61,15 +65,100 @@ def play_game(word):
     if guess_made:
         print('Congratulations! You guessed the word!')
     else: 
-        print('Oh, no! The game is over! Here comes the hangman!')                            
+        print('Oh, no! The game is over! Here comes the hangman!') 
+                              
+    print(game_lines)
 
 
+def display_hangman(guesses_left):
+    steps = [  """
+        ---------
+        |       |
+        |       O
+        |      \|/
+        |      / |
+        |
+        |
+        -------- 
+               
+               """,
+
+               """
+        ---------
+        |       |
+        |       O
+        |      \|/
+        |      /
+        |
+        |
+        -------- 
+               """,
+
+               """
+        ---------
+        |       |
+        |       O
+        |      \|/
+        |
+        |
+        |
+        -------- 
+               """,       
+         """
+        ---------
+        |       |
+        |       O
+        |      \|
+        |
+        |
+        |
+        -------- 
+               """,
+               """
+        ---------
+        |       |
+        |       O
+        |       |
+        |
+        |
+        |
+        -------- 
+               """,
+               """             
+        ---------
+        |       |
+        |       O
+        |     
+        |
+        |
+        --------  
+             """,
+             """
+        ---------
+        |       |
+        |       
+        |    
+        |
+        |
+        -------- 
+                
+    """]
+
+    return steps[guesses_left]
+
+    
 def main():
     display_welcome_message()
     word = create_random_word()
     play_game(word)
+    while input('Would you like to play another game?').upper == "Y":
+        display_welcome_message()
+        word = create_random_word()
+        play_game(word)
 
-main()    
+
+if __name__ == "__main__":
+    main()    
 
 
 
