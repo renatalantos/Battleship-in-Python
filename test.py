@@ -98,8 +98,8 @@ def random_col(board):
     return randint(1, len(board))
     
 
-#random_row(board)
-#random_col(board)
+random_row(board)
+random_col(board)
 
 
 ship_row = random_row(board) #places ship row on the board
@@ -107,104 +107,48 @@ ship_col = random_col(board) #places ship column on the board
 ship_list = []
 
 
-def generate_ships_by_size():
-    """
-    Generates ships by different sizes, with incrementing sizes and numbers.
-    The ship number is half of the board size.
-    The for loop increments the size, so e.g. if board_size = 6,
-    number of ships is 3, their sizes are 1, 2, 3.
-    """
 
-    #global ship_row
-    #global ship_col
-    for a in range(1, number_of_ships + 1):
-        
-        print('a')
-        print(a)
-        ship_list.append(a)
-        print(ship_list)
-        
-    for b in range(1, number_of_ships):
-        
-        print('b')
-        print(b)
-        ship_list.append(b)
-        print(ship_list)
-        
-    for c in range(1, number_of_ships-1):
-        print('c')
-        print(c)
-        ship_list.append(c)
-        print(ship_list)
-    for d in range(1, number_of_ships-2):
-        print(d)
-        print('d')
-        ship_list.append(d)
-        print(ship_list)
-    for e in range(1, number_of_ships-3):
-        print(e)
-        print('e')
-        ship_list.append(e)
-        print(ship_list)
-
-
-generate_ships_by_size() 
-
-
-
-def place_ships_on_board():
-    """
-    Add ship_row and ship_col as index to elements in ship_list.
-    They are incremented and validated
-    """
-
-place_ships_on_board()    
-
-
-#def place_ships():place_ships()
 
 print(f'Ship row: {ship_row}\n')
 print(f'Ship column: {ship_col}\n')     
 
 
 # Ask user for input to guess the row
+def make_guesses():
 
-for i in range(int(board_size) * 4 - 5, 0, -1):
-    print(f'Number of guesses left: {i}')
+    for i in range(int(board_size) * 4 - 5, 0, -1):
+        print(f'Number of guesses left: {i}')    
+        guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
+        guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
 
-    global guess_row
-    guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
-    global guess_col
-    guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
+        if ship_row == guess_row and ship_col == guess_col:
+            board[guess_row-1][guess_col-1] = 'H'
+            print_board(board)
+            print('\nHit!\n')
+            #print(f'Number of steps left: {i}')
 
-    if ship_row == guess_row and ship_col == guess_col:
-        board[guess_row-1][guess_col-1] = 'H'
-        print_board(board)
-        print('\nHit!\n')
+            if board[guess_row-1][guess_col-1] == 'H':
+                print('GAME OVER!')
+                break
 
-        if board[guess_row-1][guess_col-1] == 'H':
-            print('GAME OVER!')
-            break
+        elif board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
+            print('You have made that guess already!\n')
+            if i == 1:
+                print('GAME OVER!')
+         
+                break
+        else:
+            board[guess_row-1][guess_col-1] = 'X'
+            print_board(board) 
+            print('\nMiss!\n')
+           # print(f'Number of steps: {i}')
 
-    elif guess_row not in range(1, int(board_size)+1) or guess_col not in range(1, int(board_size)+1):
-        print('OOps, that is outside the ocean!')
-        if i == 1:
-            print('GAME OVER!')
-            break
+            if i == 1:
+                print('GAME OVER!')
+                break
 
-    elif board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
-        print('You have made that guess already!\n')
-        if i == 1:
-            print('GAME OVER!')
-            break
 
-    else:
-        board[guess_row-1][guess_col-1] = 'X'
-        print_board(board) 
-        print('\nMiss!\n')
+make_guesses()
 
-        if i == 1:
-            print('GAME OVER!')
-            break
 
 

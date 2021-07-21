@@ -196,9 +196,8 @@ def make_guesses():
             print('You have made that guess already!\n')
             if i == 1:
                 print('GAME OVER!')
+         
                 break
-
-
         else:
             board[guess_row-1][guess_col-1] = 'X'
             print_board(board) 
@@ -288,5 +287,78 @@ def place_ships():
 place_ships()  
 
 
+
+def generate_ships_by_size():
+    """
+    Generates ships by different sizes, with incrementing sizes and numbers.
+    The ship number is half of the board size.
+    The for loop increments the size, so e.g. if board_size = 6,
+    number of ships is 3, their sizes are 1, 2, 3.
+    """
+
+    #global ship_row
+    #global ship_col
+    if int(board_size) == 4:
+        for a in range(1, number_of_ships + 1):
+            print('a') 
+            global ship_row
+            global ship_col
+
+            ship_row = random_row(board)
+            ship_col = random_col(board) 
+            print(ship_row)
+            print(ship_col) 
+            
+        for b in range(1, number_of_ships):
+            print('b')
+
+            ship_row = random_row(board)
+            ship_col = random_col(board) 
+            print(ship_row)
+            print(ship_col) 
+        
+    elif int(board_size) == 6:
+        for a in range(1, number_of_ships + 1):
+            print('a')
+            
+        for b in range(1, number_of_ships):
+            print('b')
+         
+        for c in range(1, number_of_ships - 1):
+            print('c')
+     
+    elif int(board_size) == 8:
+        for a in range(1, number_of_ships + 1):
+            print('a') 
+            
+        for b in range(1, number_of_ships):
+            print('b')
+        
+        for c in range(1, number_of_ships - 1):
+            print('c')
+            
+        for d in range(1, number_of_ships - 2):
+            print('d')
+        
+    elif int(board_size) == 10:
+        for a in range(1, number_of_ships + 1):
+            print('a')
+        
+            
+        for b in range(1, number_of_ships):
+            print('b')
+           
+        for c in range(1, number_of_ships - 1):
+            print('c')
+           
+        for d in range(1, number_of_ships - 2):
+            print('d')
+             
+        for e in range(1, number_of_ships - 3):
+            print('e')
+      
+    
+
+generate_ships_by_size() 
 
 
