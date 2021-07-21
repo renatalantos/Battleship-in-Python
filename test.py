@@ -2,6 +2,8 @@
 from random import randint
 import math
 
+
+
 # Generate board by taking user input for board size, allowing it to be different sizes, using a for loop
 # Validate user input
 
@@ -70,7 +72,6 @@ def set_number_of_ships():
     number_of_ships = math.floor(int(board_size) / 2)
     print(f'\nNumber of ships is {number_of_ships}.\n')
 
-
 set_number_of_ships()
 
 
@@ -83,6 +84,7 @@ def random_row(board):
     Based on https://www.youtube.com/watch?v=7Ki_2gr0rsE&t=300s
 
     """
+   
     return randint(1, len(board))
 
 
@@ -95,6 +97,7 @@ def random_col(board):
     Based on https://www.youtube.com/watch?v=7Ki_2gr0rsE&t=300s
 
     """
+    
     return randint(1, len(board))
     
 
@@ -102,23 +105,26 @@ random_row(board)
 random_col(board)
 
 
-ship_row = random_row(board) #places ship row on the board
-ship_col = random_col(board) #places ship column on the board
-ship_list = []
+ship_row = random_row(board)
+ship_col = random_col(board)
 
+#coords = [ship_row, ship_col]
+#ship_list = []
+#ship_list.append(coords)
+#print(ship_list)
 
-
-
-print(f'Ship row: {ship_row}\n')
-print(f'Ship column: {ship_col}\n')     
+print(f'Ship row is: {ship_row}')
+print(f'Ship col is: {ship_col}')
 
 
 # Ask user for input to guess the row
 def make_guesses():
 
     for i in range(int(board_size) * 4 - 5, 0, -1):
-        print(f'Number of guesses left: {i}')    
+        print(f'Number of guesses left: {i}')
+      
         guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
+       
         guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
 
         if ship_row == guess_row and ship_col == guess_col:
