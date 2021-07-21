@@ -1,1 +1,1 @@
-'hello'
+word_list = ['hello']
