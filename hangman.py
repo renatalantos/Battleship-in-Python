@@ -1,17 +1,27 @@
 
 import random
-word_list = ['Two and a Half Men', 'Friends', 'The Big Bang Theory', 'Dallas']
+
+
+word_list=['haha']
+bla = ['bla']
+haha =['cupid']
+cats=[word_list, bla, haha]
     
 def display_welcome_message():
     print('Hello! Welcome! Play my hangman game!\n')
     name = input('Please enter your name: \n').upper()
-    print(f'Thank you, {name}! Hope you are ready to play!')
+    print(f'Thank you, {name}! You are ok to play!')
+
+def choose_cat(input):
+    input = input('enter cat')
+    if input == 2:
+        use_bla(bla)  
         
 
 
 def create_random_word():
 
-    word = random.choice(word_list)
+    word = random.choice(word_list) 
     return word.upper()
 
 
@@ -47,15 +57,7 @@ def play_game(word):
                 game_lines = "".join(word_as_list)
                 if '_' not in game_lines:
                     guess_made = True
-        elif len(guess_letter) == len(word) and guess_letter.isalpha():
-            if guess_letter in words_guessed:
-                print(f'You have guessed the word already!\n')
-            elif guess_letter != word:
-                print(f'Sorry, {guess_letter} is not the word!\n')
-                guesses_left -= 1
-                words_guessed.append(guess_letter)
-                guess_made = True
-                game_lines = word
+        
         else:
             if guess_letter.isalpha() is False: 
                 print('You need to enter a letter. This was a different character. \n')
@@ -148,7 +150,9 @@ def display_hangman(guesses_left):
 
     
 def main():
+    use_bla(bla)
     display_welcome_message()
+    choose_cat(input)
     word = create_random_word()
     play_game(word)
     while input('Would you like to play another game?').upper == "Y":
