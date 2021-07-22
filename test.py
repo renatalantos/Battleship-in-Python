@@ -113,47 +113,37 @@ print(f'Ship row is: {ship_row}')
 print(f'Ship col is: {ship_col}')
 
 
+guesses = False
+
 # Ask user for input to guess the row
 def make_guesses():
-
-    for i in range(int(board_size) * 4 - 5, 0, -1):
+    guesses_left  = int(board_size) * 4 - 5
+    while guesses_left > 0 and guesses is False:
         
-        guesses_left  = int(board_size) * 4 - 5
-        guess_row = input('\nEnter a number within your board size range to guess the row:\n')
-        guess_col = input('\nEnter a number within your board size range to guess the column:\n')
+        guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
+
+        guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
+
+
+
         
         if ship_row == guess_row and ship_col == guess_col:
-            board[int(guess_row)][int(guess_col) -1] = 'H'
+            board[guess_row-1][guess_col -1] = 'H'
             print_board(board)
             print('\nHit!\n')
             guesses_left -= 1
             print(f'Number of guesses left: {guesses_left}')
 
-            if board[int(guess_row)][int(guess_col) -1] == 'H':
+            if board[guess_row-1][guess_col -1] == 'H':
                 print('GAME OVER!')
                 break
 
         else:
             if int(guess_row) not in range(1, int(board_size)+1) or int(guess_col) not in range(1, int(board_size)+1):
+                print('OOps, that is outside the ocean!')
         
-                try:   
-                    raise IndexError
-                except IndexError:
-                    print('OOps, that is outside the ocean!')
-                else:
-                    pass   
-                     
-            elif type(guess_row) == int is False or type(guess_col) == int is False:
-                try:
-                    raise ValueError
-                except ValueError:
-                    print('Wrong input!')
-                else:
-                    pass 
-
-                   
                  
-            elif board[int(guess_row)][int(guess_col)-1] == 'H' or board[int(guess_row)][int(guess_col)-1] == 'X':
+            elif board[guess_row-1][guess_col -1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
                 print('You have made that guess already!\n')
                 print(f'Number of guesses left: {guesses_left}')
                 if guesses_left == 1:
@@ -161,7 +151,7 @@ def make_guesses():
                     break
             
             else:
-                board[int(guess_row)][int(guess_col)-1] = 'X'
+                board[guess_row-1][guess_col-1] = 'X'
                 print_board(board) 
                 print('\nMiss!\n')
                 guesses_left -= 1
@@ -169,8 +159,7 @@ def make_guesses():
 
                 if guesses_left == 1:
                     print('GAME OVER!')
-                    onbreak
-
+               
 
 make_guesses()
 
