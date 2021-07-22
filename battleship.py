@@ -192,12 +192,13 @@ def make_guesses():
                 print('GAME OVER!')
                 break
 
-        elif board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
+         board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
             print('You have made that guess already!\n')
             if i == 1:
                 print('GAME OVER!')
-         
                 break
+        else:
+            if int(guess_row) not in range(1, int(board_size)+1) or int(guess_col) not in range(1, int(board_size)+1):        
         else:
             board[guess_row-1][guess_col-1] = 'X'
             print_board(board) 
@@ -362,3 +363,47 @@ def generate_ships_by_size():
 generate_ships_by_size() 
 
 
+def validate_guess_row(guess_row):
+    try:
+        if int(guess_row) not in range(1, int(board_size)+1):
+            raise IndexError
+    except IndexError:
+        print('This number is out of range!\n')
+        return False
+        
+        if guess_row.isalpha or guess_row.isalnum() is False:
+            raise ValueError
+    except ValueError:
+        print(f'{guess_row} is not a number.')
+        return False    
+
+    else:
+        pass
+    return True
+
+
+
+
+while True:
+    print('\nEnter a number  to guess the row:\n')
+    guess_row = input('Guess row: ')
+    if validate_guess_row(guess_row):
+        break
+
+def validate_guess_col(guess_col):
+    try:
+        if int(guess_col) not in range(1, int(board_size)+1):
+            raise IndexError
+    except IndexError:
+        print('This number is out of range!\n')
+        return False
+        
+        if guess_col.isalpha or guess_col.isalnum() is False:
+            raise ValueError
+    except ValueError:
+        print(f'{guess_col} is not a number.')
+        return False    
+
+    else:
+        pass
+    return True
