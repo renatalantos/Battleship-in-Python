@@ -113,85 +113,141 @@ print(f'Ship row is: {ship_row}')
 print(f'Ship col is: {ship_col}')
 
 
+
 def validate_guess_row(guess_row):
+    """
+    Validates string input for row guess.
+    It raises a IndexError if input given is out of range
+    by validating it as an integer 
+    and raises a ValueError if input is a letter or a 
+    non-alphanumeric character.
+    """
+    
     try:
         if int(guess_row) not in range(1, int(board_size)+1):
             raise IndexError
     except IndexError:
         print('This number is out of range!\n')
-        return False
-        
         if guess_row.isalpha or guess_row.isalnum() is False:
             raise ValueError
     except ValueError:
         print(f'{guess_row} is not a number.')
-        return False    
-
+        return False
     else:
-        pass
-    return True
+        
+        return True
 
+# 
+# while True:         #Until user gives valid input, the loop runs.
+#     print('\nEnter a number  to guess the row:\n')
+#     guess_row = input('Guess row: ')
+#     if validate_guess_row(guess_row):
+#         break      #The loop breaks when user enters valid input.
 
-
-
-while True:
-    print('\nEnter a number  to guess the row:\n')
-    guess_row = input('Guess row: ')
-    if validate_guess_row(guess_row):
-        break
+        
 
 def validate_guess_col(guess_col):
+    """
+    Validates string input for row guess.
+    It raises a IndexError if input given is out of range
+    by validating it as an integer 
+    and raises a ValueError if input is a letter or a 
+    non-alphanumeric character.
+    """
+        
     try:
         if int(guess_col) not in range(1, int(board_size)+1):
             raise IndexError
     except IndexError:
         print('This number is out of range!\n')
-        return False
         
         if guess_col.isalpha or guess_col.isalnum() is False:
             raise ValueError
     except ValueError:
         print(f'{guess_col} is not a number.')
-        return False    
-
+        return False
+ 
     else:
-        pass
-    return True
+    
+        return True
 
 
-    while True:
-        print('\nEnter a number  to guess the row:\n')
-        guess_col = input('Guess col: ')
-        if validate_guess_col(guess_col):
-            break    
+#while True:   #Until user gives valid input, the loop runs
+#    print('\nEnter a number  to guess the row:\n')
+#    guess_col = input('Guess col: ')
+#    if validate_guess_col(guess_col):
+#        break    #Until user gives valid input, the loop runs
 
 
 guesses = False
-# Ask user for input to guess the row
-def make_guesses():
 
-    guesses_left  = int(board_size) * 4 - 5
+
+def make_guesses():
+    """
+    The while loop handles user input after validation.
+    On the outside it runs on the condition that there are available guesses.
+    Hits and misses are determinded by the available characters on the board,
+    which will update after hits and misses.
+    If user enters an invalid guess or has guessed the current intersection of
+    row and column already, the available guesses won't update.
+    """
+
+    
+    guesses_left = int(board_size) * 4 - 5
     while guesses_left > 0 and guesses is False:
-        #print(f'Number of guesses left: {guesses_left}')    
-        #guess_row = int(input('\nEnter a number within your board size range to guess the row:\n'))
-        #guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
+        #print(f'Number of guesses left: {guesses_left}')
+        guess_row = input('\nEnter a number within your board size range to guess the row:\n')
+        try:
+            if int(guess_row) not in range(1, int(board_size)+1):
+                raise IndexError
+        except IndexError:
+            print('Oops, out of the ocean!\n')
+            continue
         
-        if ship_row == guess_row and ship_col == guess_col:
-            board[guess_row-1][guess_col-1] = 'H'
-            print_board(board)
-            print('\nHit!\n')
-            guesses_left -=1
+            if guess_row.isalpha or guess_row.isalnum() is False:
+                raise ValueError
+        except ValueError:
+            print(f'"{guess_row}" is not a number.')
+            continue
+ 
+        else:
+            break
+    
+        return True
+        guess_col = int(input('\nEnter a number within your board size range to guess the column:\n'))
+
+        try:
+            if int(guess_col) not in range(1, int(board_size)+1):
+                raise IndexError
+        except IndexError:
+            print('Oops, out of the ocean!\n')
+            continue
+        
+            if guess_col.isalpha or guess_col.isalnum() is False:
+                raise ValueError
+        except ValueError:
+            print(f'{guess_col} is not a number.')
+            continue
+ 
+        else:
+            break
+    
+        return True
+      
+
+        if ship_row == guess_row and ship_col == guess_col: # First condition to check is whether user
+            board[guess_row-1][guess_col-1] = 'H'           # row and column correctly. If randomly-generated 
+            print('\nHit!\n')                               # ship_row and user's guess_row and randomly-generated    
+            guesses_left -=1                                # ship_col and guess_col are intersected, there is a hit.
             (f'Number of steps left: {guesses_left}')
 
-            if board[guess_row-1][guess_col-1] == 'H':
+            if board[guess_row-1][guess_col-1] == 'H':     # As there is only one ship, a hit is the end of the game.
                 print('GAME OVER!')
                 break
 
         else:
-            if guess_row not in range(1, int(board_size)+1) or guess_col not in range(1, int(board_size)+1):
-                #raise IndexError
-                print('OOps, that is outside the ocean!') 
-            elif board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
+            
+            if board[guess_row-1][guess_col-1] == 'H' or board[guess_row-1][guess_col-1] == 'X':
                 print('You have made that guess already!\n')
                 if guesses_left == 1:
                     print('GAME OVER!')
