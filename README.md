@@ -182,7 +182,7 @@ As this game has more of a logical structure than anything else, I think display
 
  ## Validation 
 
-  The run.py file passed the PEP8 validator with 5 warning messages about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format.
+  The run.py file passed the PEP8 validator with 5 warning messages about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format. Editor: Rulers in GitPod settings to check line length.
 
   [Display line in Python after using \ to shorten row](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/guessed_already.JPG)
 
@@ -241,9 +241,9 @@ As I didn't add any dependencies, I didn't need to update the requirements.txt f
 22. Finally, a message was displayed: 'Your app was successfully deployed.'
 23. I clicked on View underneath the message.
 24. This brought up the console in Heroku and my code was running straight away without my prompting it to do so.
-25. My program was running fine.
+25. My program was running fine, handling valid and invalid user inpt.
 26. I restarted it by clicking on Run Program.
-27. It was working as expected.
+27. It was working as expected, handling valid and invalid user inpt.
 28. My live site was deployed a few minutes later under [Heroku link:](https://battleship-in-python.herokuapp.com/)
 
 Also, the link to my GitHub repository is [GitHub link](https://github.com/renatalantos/Battleship-in-Python) 
@@ -253,53 +253,42 @@ Also, the link to my GitHub repository is [GitHub link](https://github.com/renat
 
 # Acknowledgements 
 
-The below website is a collage for all over the web.
+I used various resources to create the program.
 
-## Idea
+## Code
 
-Completely mine. However, I was glad to discover that there are web pages, images, videos featuring parent support groups and therapy groups in general. 
+For the original flowchart, I used the following link: [Original Flowchart](https://github.com/farhathfaisal/battleship) . However, I later recreated it by my own logic.
 
-## Text 
-Text is a mix from the following websites:
+To make sure I know how battleship is played I used the following video: [Battleship video idea](https://www.youtube.com/watch?v=hkKw-7aOjj8)
 
-* [General1](https://www.relate.org.uk/)
-* [General2](https://turn2me.ie/)
-* [General3](http://www.familymatters.ie/testimonials.html)
-* [General4](https://www.goodtherapy.org/learn-about-therapy/modes/group-therapy)
-* [Confidentiality page](https://students.tufts.edu/sites/default/files/HWClientConsentConfidentialityPolicy.pdf)
+I used this codecademy video to build up the basic sructure: [Codecamedy video for design](
+https://www.youtube.com/watch?v=7Ki_2gr0rsE&t=300s
+)
 
-## Images 
+I got the idea how to decrement guesses from this video:
+[Hangman video](https://www.youtube.com/watch?v=m4nEnsavl6w) 
+Before, I used a for loop i to decrement them but they guesses decremented at every step, so I didn't go with it.
 
-Images are  courtesy of the [pexels.com](https://www.pexels.com/).  Thanks Tima!
-The main Home page image is featured on the [www.newportacademy.com](https://www.newportacademy.com/resources/restoring-families/parenting-support-groups/) webiste.
+This StackOverFlow thread helped me resolve my validation issues:
+[StackOverFlow: Validation Explined](https://stackoverflow.com/questions/23294658/asking-the-user-for-input-until-they-give-a-valid-response)
 
-## Video 
+This StackOverFlow thread helped me shorten my lines for PEP8 validation:
+[StackOverFlow: Line Too Long](https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation
+)
 
-Video is courtesy of a lovely parent support group and YouTube
-[YouTube video link](https://www.youtube.com/watch?v=jAIRxEWfl7Y)
 
-## Text styling
-I used the GoogleFonts website to choose my letter styles.
 
-## Icons
-
-Icons are from the FontAwesome website.
-
-## Colours
-Colours were partly chosen from the mycolor.space website and the default palette in GitPod. 
-
-## Technologies
-My beloved cheetsheet, the www.w3schools website for Javascript. Kits to power image transformations, the gallery slideshow and buttons for the slideshow are from there. 
 
 # Special Acknowledgements
 
-* To Roman for staring us off on this journey.
 * To Kasia for all her help and hard work.
 * To my classmates who helped and advised.
 * To my mentor Seun for her guidance.
 
-And last but not least my family for testing my pages while I was testing their patience.
-Sorry about the late dinners and horrible meals!!! And Thanks!
+And last but not least my family for putting up with me when I'm Out of Order and my cat for forgiving me for forgetting to feed her while I'm coding.
+Thanks!!!
+
+Thanks for reading.
 
 
 
