@@ -1,4 +1,6 @@
 from random import randint
+
+
 """
 Import randint package in order to be able to
 generate random integers for ship rows and columns
@@ -25,7 +27,7 @@ def build_board(board_size):
             for i in range(int(board_size))]
 
 
-def print_board(board): #  prints the board
+def print_board(board):  # prints the board
 
     for b in board:
         print(*b)
@@ -111,14 +113,14 @@ def random_col(board):
     Based on https://www.youtube.com/watch?v=7Ki_2gr0rsE&t=300s
 
     """
-  return randint(1, len(board))
-   
+    return randint(1, len(board))
+
 
 random_row(board)
 random_col(board)
 
-#Sets variables for ship row and column
-ship_row = random_row(board) 
+#  Sets variables for ship row and column
+ship_row = random_row(board)
 ship_col = random_col(board)
 
 
@@ -138,99 +140,94 @@ def make_guesses():
     which will update after hits and misses.
     If user enters an invalid guess or has guessed the current intersection of
     row and column already, the available guesses won't update.
-    """  
+    """
+
     guesses_left = int(board_size) * 4 - 5
     while int(board_size) * 4 - 5 > 0 and guesses is False:
-        
-        
-        
-        guess_row = input(f'\nEnter a number within 
-        your board size range to guess the row:\n')
-        guess_col = input(f'\nEnter a number within
-        your board size range to guess the column:\n')
+
+        guess_row = input(f'\nEnter a number within\
+                    your board size range to guess the row:\n')
+        guess_col = input(f'\nEnter a number within\
+                    your board size range to guess the column:\n')
         print(f'\nNumber of guesses left: {guesses_left}\n')
 
         try:
             if int(guess_row) \
-                not in range(1, int(board_size)+1) \ 
-                or int(guess_col) not in range(1, int(board_size)+1):
+                    not in range(1, int(board_size)+1) \
+                    or int(guess_col) not in range(1, int(board_size)+1):
                 raise IndexError
         except IndexError:
             print('Oops, ship is out of the ocean!\n')
             continue
-        
+
             if guess_row.isalpha or guess_row.isalnum() is False:
                 raise ValueError
         except ValueError:
-            print(f'One or both of your guesses is not a number.
+            print(f'One or both of your guesses is not a number.\
             Please check and try again!')
             continue
-            
+
             if guess_col.isalpha or guess_col.isalnum() is False:
                 raise ValueError
         except ValueError:
-            print(f'One or both of your guesses is not a number. 
+            print(f'One or both of your guesses is not a number.\
             Please check and try again!')
             continue
 
         else:
             pass
-        
-            
-       """
-       First condition is to check is whether user guessed
-       row and column correctly. If randomly-generated
-       If randomly-generated ship_row and user's guess_row 
-       and randomly-generated, ship_col and guess_col are intersected, 
-       there is a hit. This is checked by the row and col serving
-       as indexes in the board[] list.
-       As there is only one ship, a hit is the end of the game.
-       Message is displayed.
-       """
-
+       
+        """
+        First condition is to check is whether user guessed
+        row and column correctly. If randomly-generated
+        If randomly-generated ship_row and user's guess_row
+        and randomly-generated, ship_col and guess_col are intersected,
+        there is a hit. This is checked by the row and col serving
+        as indexes in the board[] list.
+        As there is only one ship, a hit is the end of the game.
+        Message is displayed.
+        """
+        """
+        The else statement and its conditions
+        check for outcomes if user doesn't hit.
+        """
+        """
+        Second condition in else is to check is what happens if user
+        made a guess already. Message is displayed.
+        Number of guesses are not incremented.
+        """        
+        """
+        Else in else is to check is what happens if user
+        doesn't guess correctly. If intersected guessed rows and columns
+        (their numbers serve as indices in board list)
+        hit an X on the board, there is a miss.
+        Number of guesses are incremented with each
+        incorrect guess. Message is displayed.
+        If number of guesses is one, user loses.
+        """
 
         if ship_row == int(guess_row) and ship_col == int(guess_col):
             board[int(guess_row)-1][int(guess_col)-1] = 'H'
             print_board(board)
-            print('\nHit! Congratulations! You sank my battleship!\n')                               
-            guesses_left -= 1                               
+            print('\nHit! Congratulations! You sank my battleship!\n')                        
+            guesses_left -= 1                         
             print(f'\nNumber of guesses left: {guesses_left}\n')
 
-            if board[int(guess_row)-1][int(guess_col)-1] == 'H':     
+            if board[int(guess_row)-1][int(guess_col)-1] == 'H':
                 print('GAME OVER!')
                 break
-        
-        """
-        The else statement and its conditions 
-        check for outcomes if user doesn't hit.
-        """
-
         else:
-        """
-        Second condition in else is to check is what happens if user 
-        made a guess already. Message is displayed.
-        Number of guesses are not incremented.
-        """    
-            
+
             if board[int(guess_row)-1][int(guess_col)-1] == 'H' \
-                or board[int(guess_row)-1][int(guess_col)-1] == 'X':
+                    or board[int(guess_row)-1][int(guess_col)-1] == 'X':
                 print_board(board)
                 print('\nYou have made that guess already!\n')
                 if guesses_left == 1:
                     print('GAME OVER!')
                     break
-         """
-        Else in else is to check is what happens if user 
-        doesn't guess correctly. If intersected guessed rows and columns
-        (their numbers serve as indices in board list)
-        hit an X on the board, there is a miss.
-        Number of guesses are incremented with each 
-        incorrect guess. Message is displayed.
-        If number of guesses is one, user loses.
-        """    
             else:
                 board[int(guess_row)-1][int(guess_col)-1] = 'X'
-                print_board(board) 
+                print_board(board)
                 print('\nMiss!\n')
                 guesses_left -= 1
                 print(f'\nNumber of guesses left: {guesses_left}\n')
@@ -241,7 +238,3 @@ def make_guesses():
 
 
 make_guesses()
-
-
-
-
