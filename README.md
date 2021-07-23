@@ -1,29 +1,25 @@
 # Milestone Project 1 - Embrace Support Group
-![image](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Am_I_responsive_screenshot.JPG)
+![image](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/user_wins.JPG)
 
 ## Table of Contents
 
 * Introduction
 * UX
-  * Business goals
+ 
   * Owner Goals
   * User Goals
 
 * Layout
-  * Home
-  * About
-  * Sessions
-  * Gallery
-  * Contact
-  * Confidentiality 
+ 
   
  * Features
 
 * Structure
-  * Wireframes
+  * FLowchart
+  * General logic
+  * Functions
   * Discrepancies with original ideas
-  * Colours
-  * Typography
+  
 
 * Technologies
 
@@ -36,20 +32,25 @@
 * Acknowledgements
 
 # Introduction
-The product (Embrace Support Group website) is for a fictional support group where end users are parents with problem teenage children or parents with simply teenage children. The site provides information on the support group's purpose, ethos, practices, organizers, visual aids and contact details and extra professional assistance. It also informs users about their privacy and data protection rights. 
-It is a non-profit business, participation is free. The site has been designed for desktop, laptop, tablet and mobile devices.
+The product (Battleship game in Python) is a logic game based on the well known boardgame, where two players play against each other. Each player has two grids, one with different sizes of battleships on it, and the other oneis to mark off the guesses they made about the other players battleships. Battleships are represented by intersections of rows and columns. They can be only vertical or horizontal, not diagonal. Ships can touch each other, though. 
+
+The players are not allowed to see the other player's grids. 
+
+The players take turns making guesses by calling out row and column intersections. If a player calls out a row and column intersection with no battleship, he crosses it off with an X and the other player does it, too on their own grid. Hits are marked differently. The player, who guesses all the other player's battleship first, wins the game.
+
+In this project the user plays against the computer. The computer generates a random row and column number, and the intersection represents a ship. 
+
+This game has been designed with one ship only. It is more for the showcasing of logic, putting together code components and user input validation. In future, I would like to implement more ships in the game, to make it more challenging and enjoyable for users andto improve my Python skills.
 
 
 # UX
 
 * Owner goals
 
-The owners of the product are the organizers who run the meetings.
+The owners of the product is the programmer who would like to showcase her skills for users, fellow programmers and prospective employers. 
 
 
-The site owners use online presence to attract participants to the support group meetings.
-
-*User goals
+* User goals
 Potential users would like to achieve the following:
 
 * Find a parent support group
