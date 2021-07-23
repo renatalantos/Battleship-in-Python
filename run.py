@@ -46,7 +46,7 @@ def validate_board_size(board_size):
             raise ValueError
 
     except ValueError:
-        print(f'Oops, you are not able to use "{board_size}" \
+        print(f'Oops, you are not able to use "{board_size}"\
               to set your board size, please try again. \n')
         return False
     else:
@@ -85,7 +85,7 @@ def set_number_of_ships():
     """
     global number_of_ships
     number_of_ships = math.floor(int(board_size) / 2)
-    print(f'\nNumber of ships is {number_of_ships}.\n')
+    #  print(f'\nNumber of ships is {number_of_ships}.\n')
 
 
 set_number_of_ships()
