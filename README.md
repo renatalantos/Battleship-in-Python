@@ -1,4 +1,4 @@
-# Milestone Project 1 - Embrace Support Group
+# Milestone Project 3 - Battleship in Python
 ![image](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/user_wins.JPG)
 
 ## Table of Contents
@@ -73,25 +73,80 @@ My battleship is a very simple console based game. Only the mere instructions, u
 
 
 # Features
+The game includes the following features:
+
+
+* Instructions for user
+* Feedback messages to user
+* Grid in various sizes
+* Grid elements O, X, H
+The original grid is composed of O characters,
+which are updated either to X or H, depending on whether user hit or missed.
+* Updated messages to inform user where they are in the game.
+
+### Instructions for user
+The user instructions prompt user to provide input within various critera. The input expected is numbers thoughout the whole programme. The numbers are entered as strings and validated inside try statements of while loops as integers. Depending whether I expect certain numbers or numbers within a range, I validate the numbers with raising and excepting ValueError or IndexError. Also, I made sure that input cannot be non-alphanumerical character.   
+ 
+
+Insert screenshot [Error message for non-alphanumerical input]() 
+
+### Feedback messages for user
+
+The feedback messages are displayed after validation, let validation be successful or not. They reconfirm what input is wanted or whether input has been accepted.
+
+Insert screenshot [Error message for input out of range]()
+
+Insert screenshot[Ok to play]()
+
+### Grid in various sizes
+
+The grid can be set to sizes 4 x 4, 6 x 6, 8 x 8 and 10 x 10. To do that, I take and validate user input with the board_size variable. To do that, I use the def validate_board_size(board_size) function and a while loop in the main body of the code. The loop runs until user input is validated and then builds the board. This is done by the build_board(board_size) and print_board(board) functions.
+
+### Grid elements O, X, H
+
+These are the elements of the grid. The grid is first displayed as a number of lists of O characters, which have been stripped of ' 's and []s by *b in the print_board(board) function.
+
+The while loop inside the make_guesses() function runs the validated user input for guess rows and guess columns (By while loop in the make_guesses() function). The first if statment inside the while loop checks whether the guess row and guess column provided by the user is identical with the random ship row and ship column numbers generated earlier by the def random_row(board) and def random(col) functions. If so, the intersection of the identical rows and columns updates to H on the board and the game ends by the user's win.
+
+If after checking the first if statement the programme will proceed to the else statement if the above condition wasn't met. The the next possibility is that the user already guessed the row and column and was not successful. This is mapped out in the first if statement inside the else. If the previous guess row and column, which are represented as indices updated board[] list have already been guessed, the board element O was updated to X. If guess row and guess column intersection equal to this, then that intersection was already guessed.
+
+The second else inside the else will do the final check, with the only remaining possibility that the intersection of guess row and guess column is an X. If the remaining guesses run out (they are set in the while loop and decrement with only incorrect guess) and their number is 0, the user loses and the game ends.
+
+### Updated messages to inform user where they are in the game
+
+Updating user is achieved by informing them about the remaining number of guesses, which are decremented with every incorrect guess. 
+The message with the number of remaining guess will display every time user enters validated input. Guesses that have already been made are not penalized.
 
 
 ## Future features
+I would like to add ASCII graphics to the game to make it more attractive as playing in a console can be quite monotonous. 
 
-A hamburger menu for mobile view.
+Also, I would like to add more ships, which I couldn't have achieved without running out od time on this occasion.
+
+A welcome message should be added as well.
+
+
 
 # Structure
-## Wireframes
 
+As this game has more of a logical structure than anything else, I think displaying the flowchart is sufficient here. This maps out the basic logic of the game.
 
-### Wireframes for mobile, tablet and desktop view are available here: 
+1. User is prompted to enter input.
+1. Input is validated.
+2. It is either valid or not.
+3. If it is valid, user can start playing.
+4. If it is't valid, user is prompted for input again until correct input is entered.
+5. User enters another input.
+6. It is either valid or not.
+7.  If it is't valid, user is prompted for input again until correct input is entered.
+8. If it is valid, user either hits or misses.
+9. If user hits, user wins and game is over.
+10. If user misses, user is prompted for input again, the process restarts from step 5.
+11. If this is the last hit and user runs out of guesses, user loses and the game is over.
 
-[Mobile View](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/wireframes/Milestone_Project_1_Wireframes%20for%20mobile%20view.pdf)
+## Flowchart
 
-
-[Tablet View](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/wireframes/Milestone_Project_1_Wireframes%20for%20tablet%20view.pdf)
-
-
-[Desktop View](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/wireframes/Milestone_Project_1_Wireframes%20for%20desktop%20view.pdf)
+[Flowchart](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/Battleship%20Flowchart.pdf)
 
 ## Discrepancies with original ideas
 
