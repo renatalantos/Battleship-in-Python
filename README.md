@@ -190,11 +190,22 @@ As this game has more of a logical structure than anything else, I think display
   [Display line in Idle after using \ to shorten row](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/run_in_pyhton_idle.JPG)
 
 
+
   I used Idle as well, but as its error messages are not detailed when it comes to syntax errors, I mainly used GitPod. I ran python3 in the command line and checked the error messages. I found GitPod good for highlighting errors in the code.
 
+
+
   [PEP8 Warning messages after first validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20first%20validation.JPG)
+
+
+
+
   [PEP8 Warning messages after second validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20second%20validation.JPG)
+
+
   [PEP8 Warning messages after third validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20third%20validation.JPG)
+
+  
   [PEP8 Warning messages after fourth validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20fourth%20validation.JPG)
 
 
