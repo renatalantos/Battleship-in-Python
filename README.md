@@ -88,15 +88,15 @@ which are updated either to X or H, depending on whether user hit or missed.
 The user instructions prompt user to provide input within various critera. The input expected is numbers thoughout the whole programme. The numbers are entered as strings and validated inside try statements of while loops as integers. Depending whether I expect certain numbers or numbers within a range, I validate the numbers with raising and excepting ValueError or IndexError. Also, I made sure that input cannot be non-alphanumerical character.   
  
 
-Insert screenshot [Error message for non-alphanumerical input](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/error_message_non_alphanumerical.JPG) 
+Error message for user [Error message for non-alphanumerical input](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/error_message_non_alphanumerical.JPG) 
 
 ### Feedback messages for user
 
 The feedback messages are displayed after validation, let validation be successful or not. They reconfirm what input is wanted or whether input has been accepted.
 
-Insert screenshot [Error message for input out of range](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/error_message_not_in_range.JPG)
+Error message for user [Error message for input out of range](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/error_message_not_in_range.JPG)
 
-Insert screenshot[Ok to play](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/ok%20to%20play.JPG)
+Confirmation for user [Ok to play](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/ok%20to%20play.JPG)
 
 ### Grid in various sizes
 
