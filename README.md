@@ -40,7 +40,7 @@ The players take turns making guesses by calling out row and column intersection
 
 In this project the user plays against the computer. The computer generates a random row and column number, and the intersection represents a ship. 
 
-This game has been designed with one ship only. It is more for the showcasing of logic, putting together code components and user input validation. In future, I would like to implement more ships in the game, to make it more challenging and enjoyable for users andto improve my Python skills.
+This game has currently one ship only. It is more for the showcasing of programming logic, putting together code components and user input validation. In future, I would like to implement more ships in the game, to make it more challenging and enjoyable for users andto improve my Python skills.
 
 
 # UX
@@ -51,181 +51,29 @@ The owners of the product is the programmer who would like to showcase her skill
 
 
 * User goals
+
 Potential users would like to achieve the following:
 
-* Find a parent support group
-* Contact a parent support group
-* Contact a child psychologist
-* Get information on support group's practices
-* Get information on support group's ethos
-* Get information on responses
-* Get information on leaders 
-* Get visual aids
-* Get information on privacy and data protection rights
-* Be able to view the site on devices with different screen sizes and reolution 
+* Play a logic based game
+* Play the game on different difficuly levels
+
+The game uses a very basic logic of elimination: once you guessed something and it was wrong, you shouldn't guess that again but move onto a next guess. 
+
+Different diffuculty levels are achieved by the different grid sizes.
+Possible grid sizes are 4 x 4, 6 x 6, 8 x 8, 10 x 10. They can be set by the initial user input.
 
 
 # Layout
 
-## Home
-The Homepage introduces the purpose and the main activity of the group, the vision and responses.
-The home page consists of the following sections:
+My battleship is a very simple console based game. Only the mere instructions, user feedbacks and the grid at the different stages of the game is displayed. In future, I would like to display some ASCII graphics to make the game more attractive and to get learn more about graphics in Python.
 
-* Welcome
+[Battleship running in Heroku](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/user_loses.JPG)
+[Battleship running in IDLE](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/run_in_pyhton_idle.JPG) 
 
-* Vision
-
-* Testimonials
-
-[Home page main image](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/Home_page_main_image.JPG)
-
-
-[Welcome section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Welcome_section_mobile_view.JPG)
-
-[Visions section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Vision_section_mobile_view.JPG)
-
-[Testimonials section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Testimonials_section_tablet_view.JPG)
-
-## About 
-
-The About page introduces the group leader, describes the benefits and gives information about the venue and times. 
-The About page consists of the following sections:
-
-* Our Group Leaders
-
-* Group Therapy Benefits 
-
-* Meetups 
-
-[About page main image](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/About_page_main_image.JPG)
-
-[Our group leaders section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Group_leaders_tablet_view.JPG)
-
-[Group Therapy Benefits Section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Benefits_tablet_view.JPG)
-
-[Meetups section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Meetups_tablet_view.JPG)
-
-
-## Sessions
-The Sessions page intoduces the sessions in more detail. It provides a video of an actual session, frequently discussed topics and activities outside the sessions.
-
-The Sessions page consists of the following sections:
-
-* How It Happens
-
-* Frequently Discussed - Teen and Parent Concerns
-
-* Other Activities
-
-[Sessions page main image](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/sessions_page_main_image.JPG)
-
-[How It Happens Section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Actual_session_mobile_view.JPG)
-
-[Frequently Discussed - Teen and Parent Concerns Section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Concerns_desktop_view.JPG)
-
-[Other Activities Section](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/activites_mobile_view.JPG)
-
-
-## Gallery 
-
-The gallery page consists of a heading and slideshow image gallery. It provides visual aid.
-
-[Gallery page slideshow gallery](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Gallery_slideshow_tablet_view.JPG)
-
-
-## Contact  
-The contact pages provides means for users to get in touch with the group.
-
-The contact page consist of the following sections:
-
-* Our contact details
-
-* Contact a child psychologist
-
-* Signup for newsletter form
-
-* Map to the venue
-
-[Contact details](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Contacts_desktop_view.JPG)
-
-[Contact a child psychologist](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Contacts_desktop_view.JPG)
-
-[Signup for newsletter form](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Signup_form_desktop_view.JPG)
-
-[Map to the venue](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Map_mobile_view.JPG)
-
-## Confidentiality
-
-This page opens from the Confidentiality link in the footer. It is a mere confidentiality statement. It is styled as the body of the other pages, however, it is meant to be a document and therefore has no header or footer. 
-
-[Confidentiality statement](https://github.com/renatalantos/Embrace-support-group/blob/master/documents/screenshots/Confidentiality_statement.JPG)
 
 
 # Features
 
-## Header
-
-The header contains a logo of the Support group, links to the Home, About, Sessions, Gallery and Contact pages.
-The header will allow the user to see all available pages at a glance and navigate between pages without having to go back to the previous pages. The header is present on all pages linked in it, except for the Confidentiality page, which is a document, not an actual webpage.
-
-
-## Footer 
-
-The footer contains a link to the Condidentiality page (statement), a link to contact a child psychologist and links to Facebook, Instagram, Twitter and Youtube pages. For visual enhancement, it displays icons over the link text. For a simpler solution, the <em>Follow us on social media</em> text is not a link, user needs to click on the icons. Hovering over them guide the user. On the <em>Confidentiality</em> and <em>Contact a child psychologist</em> links the actual text is clickable, the icons are unresponsive. Users can use the <em>Contact a child psychologist</em> link as a shortcut to get to the contact page, were his image, profile and practice's address are displayed. 
-
-
-
-## Page main image
-
-
-The main image is present on the Home, About and Sessions pages. It's function is to grab the user's attention and to enhance the groups' ethos and practices. The text overlay provides information about activity and ethos and another overlay displays an inspirational quote.
-
-## Page information section
-
-
-On the Home, About and Sessions pages, the information section is divided into a text and image area. The images enhance the content. Titles are displayed as headings.
-
-## Testimonials section
-
-The testimonials on the Home page feature responses from existing users. For a more real experience, photos are displayed.
-
-## Group leaders section
-
-This section on the About page features the group leaders with a short description and a photograph.
-For a more real experience, photos are displayed.
-
-## Video 
-
-The video on the Sessions page features an actual session.
-
-## Slidehow image gallery
-
-This feature is on the Gallery page. It displays one image at the time, with side buttons. The images are the size of the main images on the Home, About and Gallery pages in order to stay in keeping with the site's general layout. A slow zoomout enhances the images, and there is a friendly message to the user in the bottom right corner in a text overlay. There is also a heading on the page, which gives the main message of the page.
-
-
-## Contact details section
-
-This section on the Contact page provides email-address, phone number, web address, venue address.
-
-## Child psychologist section
-
-On the contact page, a child psychologist's image, profile and practice's address are displayed. Users can also get here by clicking on the Contact a child psychologist link in the footer.
-
-## Contact form
-
-This section on the Contact page features a contact form where users can input their name and email address and then submit those to the site owners. 
-
-## Radio buttons
-
-On the Contact page, the user can let the site owners know whether he/she wants to participate in the sessions soon. Radio buttons are technically part of the contact form.
-
-## Map
-
-On the Contact page, the embedded Google map will help the user find the venue.
-
-## Confidentiality document page 
-
-This page opens from the footer Confidentiality link. It features a padlock icon to enhance the content, the actual statement and a back arrow icon and a link to get back on the Home page. It's styled the same colour as the main page background.
 
 ## Future features
 
