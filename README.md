@@ -94,9 +94,9 @@ Insert screenshot [Error message for non-alphanumerical input]()
 
 The feedback messages are displayed after validation, let validation be successful or not. They reconfirm what input is wanted or whether input has been accepted.
 
-Insert screenshot [Error message for input out of range]()
+Insert screenshot [Error message for input out of range](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/error_message_not_in_range.JPG)
 
-Insert screenshot[Ok to play]()
+Insert screenshot[Ok to play](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/ok%20to%20play.JPG)
 
 ### Grid in various sizes
 
@@ -208,7 +208,7 @@ You probably notice that I use fairly generic error messages when I validate use
 
 Inside the same code, starting on the if statements, there is a GitPod error message shown: Unreachable code. However, this doesn't show in PEP8 and the code works.
 
-[Unreachable code]()
+[Unreachable code](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/unreachable%20code.JPG)
  
 
 
