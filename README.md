@@ -177,6 +177,8 @@ As this game has more of a logical structure than anything else, I think display
 
 * **Heroku** for site deployment and to store created files
 
+* **Lucidchart** for flowchart
+
 
 # Testing 
 
@@ -257,7 +259,7 @@ I used various resources to create the program.
 
 ## Code
 
-For the original flowchart, I used the following link: [Original Flowchart](https://github.com/farhathfaisal/battleship) . However, I later recreated it by my own logic.
+For the original flowchart, I used the following chart: [Original Flowchart](https://github.com/farhathfaisal/battleship) . However, I later recreated it by my own logic.
 
 To make sure I know how battleship is played I used the following video: [Battleship video idea](https://www.youtube.com/watch?v=hkKw-7aOjj8)
 
