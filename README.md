@@ -17,7 +17,6 @@
 * Structure
   * FLowchart
   * General logic
-  * Functions
   * Discrepancies with original ideas
   
 
