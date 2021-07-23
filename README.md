@@ -88,7 +88,7 @@ which are updated either to X or H, depending on whether user hit or missed.
 The user instructions prompt user to provide input within various critera. The input expected is numbers thoughout the whole programme. The numbers are entered as strings and validated inside try statements of while loops as integers. Depending whether I expect certain numbers or numbers within a range, I validate the numbers with raising and excepting ValueError or IndexError. Also, I made sure that input cannot be non-alphanumerical character.   
  
 
-Insert screenshot [Error message for non-alphanumerical input]() 
+Insert screenshot [Error message for non-alphanumerical input](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/error_message_non_alphanumerical.JPG) 
 
 ### Feedback messages for user
 
@@ -214,21 +214,41 @@ Inside the same code, starting on the if statements, there is a GitPod error mes
 
 # Deployment
 
-The site was deployed to GitHub pages. The steps to deploy are as follows:
+The site was deployed to Heroku. The steps to deploy are as follows:
+As I didn't add any dependencies, I didn't need to update the requirements.txt file and didn't need to add a Configvar in Heroku.
 
 1. In the GitPod Workspace I made sure that everything is saved.
 2. In the Terminal window I added all my files by using git add . .
-2. In the Terminal window I queued my files using git commit -m "Meaningful, descriptive note"
-3. In the Terminal window I typed git push to push my updated files into GitHub.
-4. In GitHub I selected my repository name from the dropdown window.
-5. I navigated to the Settings tab on the right hand side (above Green Gipod button).
-6. On the Settings page I navigated to GitHub Pages.
-7. I clicked on the Check out here! link after the message: Pages settings now has its own dedicated tab!
-8. This took me to the next page GitHub Pages. 
-9. Under Source I selected branch **Master** from the **None**, **extensions** and **Master** options.
-10. From the folders beside branch I selected /(root) from /(root) and /docs.
-11. Next I clicked save.
-12. My live site was deployed a few minutes later under [the following link:](https://renatalantos.github.io/Embrace-support-group/)
+3. In the Terminal window I queued my files using git commit -m "Meaningful, descriptive note"
+4. I used git push to push my files into GitHub.
+5. I created a Heroku account on the Heroku.com site. 
+6. In Heroku, I clicked on Create a New App option.
+7. I named my app and typed it in lowercase, separating the words with dashes (-). I made sure that it is not taken by someone else and is unique. I entered the region and ignored the Add to pipeline option.
+8. I clicked on Create App.
+9. On the next page, from the Settings section in the toolbar, I clicked on Add buildpacks on the right to add further dependencies.
+10. From Buildpack, I selected python first and clicked on Add.
+11. I clicked on Add buildpacks again and selected nodejs and clicked on Add.
+12. I made sure that python is displayed on top and nodejs underneath and not the other way around.
+13. Next I selected the Deploy section from the toolbar.
+14. From the options, which application to connect to, I selected GitHub. Other options were Heroku Git and Container Registry.
+15. Next I clicked on Connect to GithHub. This prompted me to search for a Repository Name in GitHub.
+16. I selected my current project, Battleship-in-Python.
+17. When it was found, I clicked on Connect.
+18. I scrolled down the page and saw two options: Enable Automatic Deploys and Deploy Branch. 
+19. First I selected Enable Automatic Deploys so that my GitHub changes are transferred to Heroku. I knew this worked because the button faded out and displayed 'Disable Automatic Deploys'
+20. Next I clicked on Deploy Branch to initialize deployment.
+21. The app was being built by installing the necessary files and dependencies. 
+22. Finally, a message was displayed: 'Your app was successfully deployed.'
+23. I clicked on View underneath the message.
+24. This brought up the console in Heroku and my code was running straight away without my prompting it to do so.
+25. My program was running fine.
+26. I restarted it by clicking on Run Program.
+27. It was working as expected.
+28. My live site was deployed a few minutes later under [Heroku link:](https://battleship-in-python.herokuapp.com/)
+
+Also, the link to my GitHub repository is [GitHub link](https://github.com/renatalantos/Battleship-in-Python) 
+
+
 
 
 # Acknowledgements 
