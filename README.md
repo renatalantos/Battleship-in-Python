@@ -39,7 +39,7 @@ The players take turns making guesses by calling out row and column intersection
 
 In this project the user plays against the computer. The computer generates a random row and column number, and the intersection represents a ship. 
 
-This game has currently one ship only. It is more for the showcasing of programming logic, putting together code components and user input validation. In future, I would like to implement more ships in the game, to make it more challenging and enjoyable for users andto improve my Python skills.
+This game has multiple one-sized ships. The ships can be next to each other, though. It is more for the showcasing of programming logic, putting together code components and user input validation. In future, I would like to implement more ships of different sizes in the game, to make it more challenging and enjoyable for users andto improve my Python skills.
 
 
 # UX

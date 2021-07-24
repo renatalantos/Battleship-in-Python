@@ -51,7 +51,7 @@ def print_welcome():
     print('* Welcome. I hope you will enjoy this basic battleship game.')
     print('* Please take a second to read what you need to know to play.')
     print('* Ship sizes are 1 x 1. However, ships can be next to one another.')
-    print('* Ships can be duplicate. So, if all your ships are sunk and you')
+    print('* Ships can be duplicate. So, if all your ships are sunken and you')
     print('* do not get the message "You sank my battleships", you need to')
     print('* target one of your sunken ships again.')
     print('* You can set the size of the board.')
@@ -62,6 +62,7 @@ def print_welcome():
     print('* When you ran out of guesses and there are still ships on the')
     print('* board, you lose and the game ends.')
     print('* When you sank all the ships, you win and the game is over.')
+    print('* Click on the red Run Program button to restart the game.')
 
 
 print_welcome()
@@ -130,7 +131,6 @@ def to_calculate_hits(board):
     number_of_ships = math.floor(int(board_size) / 2)
     create_targets(int(number_of_ships))
     print(f'Number of ships is {number_of_ships}.')
-    print(ships_to_hit) #  prints out the targets
 
 
 def validate_board_size(board_size):
@@ -202,8 +202,8 @@ def make_guesses():
         enters anything but a number.
         """
 
-        guess_row = input(f'\nGuess row between 1 and {board_size}:\n')
-        guess_col = input(f'\nGuess column between 1 and {board_size}:\n')
+        guess_row = input(f'\nGuess row in range of 1 and {board_size}:\n')
+        guess_col = input(f'\nGuess column in range of 1 and {board_size}:\n')
         print(f'\nNumber of guesses left: {guesses_left}\n')
 
         try:
@@ -220,7 +220,6 @@ def make_guesses():
             continue
         else:
             pass
-          
         """
         First condition is to check is whether user guessed
         row and column correctly.
@@ -239,7 +238,7 @@ def make_guesses():
         Second condition in else is to check is what happens if user
         made a guess already. Message is displayed.
         Number of guesses are not incremented.
-        """        
+        """
         """
         Else in else is to check is what happens if user
         doesn't guess correctly. If intersected guessed rows and columns
@@ -280,14 +279,12 @@ def make_guesses():
                     or board[int(guess_row)-1][int(guess_col)-1] == 'X':
                 print_board(board)
                 print('\nYou have made that guess already!\n')
-                
             else:
                 board[int(guess_row)-1][int(guess_col)-1] = 'X'
                 print_board(board)
                 print('\nMiss!\n')
                 guesses_left -= 1
                 print(f'\nNumber of guesses left: {guesses_left}\n')
-                
         if len(ships_to_hit) == 0:
             print('\nCongratulations! You all sank my battleships!\n')
             print_end()
