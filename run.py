@@ -7,6 +7,11 @@ generate random integers for ship rows and columns
 """
 import math
 
+"""
+Import math package to be able to floor integer generated
+to set ship size.
+"""
+
 
 """
 Generate board by taking user input for board size,
@@ -19,6 +24,47 @@ board = []
 global ships_to_hit
 ships_to_hit = []
 global number_of_ships
+
+
+def print_graphics():
+
+    print('____   ___  ______ ______ __     ____  __  __  __ __  __')
+    print('|| )) // \\ | || | | || | ||    ||    (( \ ||  || || || \\')
+    print('||=)  ||=||   ||     ||   ||    ||==   \\  ||==|| || ||_//')
+    print('||_)) || ||   ||     ||   ||__| ||___ \_)) ||  || || ||')
+
+
+print_graphics()
+
+
+def print_end():
+
+    print('  ___  ___  ___  ___  ____      ___   __ __  ____ ____')
+    print('// \\ // \\ ||\\//|| ||        // \\  || || ||    || \\')
+    print('((___ ||=|| || \/ || ||==     ((   )) \\ // ||==  ||_//')
+    print('\\_|| || || ||    || ||___     \\_//   \V/  ||___ || \\')
+
+
+def print_welcome():
+    print("~~~~~~~~~~~ LET'S PLAY BATTLESHIP! ~~~~~~~~~~~\n")
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
+    print('* Welcome. I hope you will enjoy this basic battleship game.')
+    print('* Please take a second to read what you need to know to play.')
+    print('* Ship sizes are 1 x 1. However, ships can be next to one another.')
+    print('* Ships can be duplicate. So, if all your ships are sunk and you')
+    print('* do not get the message "You sank my battleships", you need to')
+    print('* target one of your sunken ships again.')
+    print('* You can set the size of the board.')
+    print("* You'll see the number of ships remaining.")
+    print("* You'll see the number of guesses remaining after the first shot.")
+    print('* If you miss, the missed shot displays as an X on the board.')
+    print('* If you hit, the sunken ship displays as an H on the board.')
+    print('* When you ran out of guesses and there are still ships on the')
+    print('* board, you lose and the game ends.')
+    print('* When you sank all the ships, you win and the game is over.')
+
+
+print_welcome()
 
 
 def random_row(board):
@@ -83,7 +129,8 @@ def to_calculate_hits(board):
     """
     number_of_ships = math.floor(int(board_size) / 2)
     create_targets(int(number_of_ships))
-    #  print(ships_to_hit) #  prints out the targets
+    print(f'Number of ships is {number_of_ships}.')
+    print(ships_to_hit) #  prints out the targets
 
 
 def validate_board_size(board_size):
@@ -176,11 +223,11 @@ def make_guesses():
           
         """
         First condition is to check is whether user guessed
-        row and column correctly. 
+        row and column correctly.
         The for loop in the first if checks is guessed row and guessed
-        column are indexes of the ships_to_hit list. 
+        column are indexes of the ships_to_hit list.
         If randomly-generated ship_row and user's guess_row
-        are intersected, there is a hit. This is checked by 
+        are intersected, there is a hit. This is checked by
         the row and col serving as indexes in the board[] list.
         Message is displayed.
         """
@@ -203,7 +250,7 @@ def make_guesses():
         If number of guesses is one, user loses.
         """
 
-        guess_correct = False # False is default
+        guess_correct = False  # False is default
         for hit_ship in ships_to_hit:
             """ 
             For loop iterates through the ships_to_hit list and
@@ -242,10 +289,12 @@ def make_guesses():
                 print(f'\nNumber of guesses left: {guesses_left}\n')
                 
         if len(ships_to_hit) == 0:
-            print('\nCongratulations! You sank my battleship!\n')
+            print('\nCongratulations! You all sank my battleships!\n')
+            print_end()
             break
         if guesses_left == 1:
-            print('GAME OVER!')
+            print('Oh, no! You lost!')
+            print_end()
             break
 
 
