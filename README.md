@@ -284,6 +284,8 @@ Before, I used a for loop i to decrement them but they guesses decremented at ev
 This StackOverFlow thread helped me resolve my validation issues:
 [StackOverFlow: Validation Explined](https://stackoverflow.com/questions/23294658/asking-the-user-for-input-until-they-give-a-valid-response)
 
+For validation, I also looked up the Love Sandwiches walkthrough project by CI.
+
 This StackOverFlow thread helped me shorten my lines for PEP8 validation:
 [StackOverFlow: Line Too Long](https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation
 )

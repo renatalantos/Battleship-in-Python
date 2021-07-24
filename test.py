@@ -16,8 +16,6 @@ Validate user input
 
 global board
 board = []
-global to_hit
-to_hit = []
 
 def random_row(board):
     """
@@ -44,13 +42,15 @@ def random_col(board):
     return randint(1, len(board))
 
 
-def create_hits(number_of_hits):
-  
+def something(number_of_hits):
+    to_hit = []
+
     for hits in range(number_of_hits):
         row = random_row(board)
         col = random_col(board)
         to_hit.append([row, col])
 
+    return to_hit
 
 
 def build_board(board_size):
@@ -64,15 +64,12 @@ def build_board(board_size):
             
 
 def print_board(board):  # prints the board
-
+    number_of_hits = int(board_size) / 2
+    to_hit = something(int(number_of_hits))
+    print(to_hit)
+    
     for b in board:
         print(*b)
-
-
-def to_calc_hits(board):
-    number_of_hits = int(board_size) / 2
-    create_hits(int(number_of_hits))
-    print(to_hit)
 
 
 def validate_board_size(board_size):
@@ -117,7 +114,6 @@ while True:
     if validate_board_size(board_size):
         print(f'\nYour board size is {board_size} x {board_size}.\n')
         board = build_board(board_size)
-        to_calc_hits(board)
         print_board(board)  # * enables list elements to be printed on a
         break               # single line with spaces.
 
@@ -138,6 +134,16 @@ random_row(board)
 random_col(board) 
 
 
+
+#  Sets variables for ship row and column
+ship_row = random_row(board)
+ship_col = random_col(board)
+
+
+print(f'Ship row is: {ship_row}')
+print(f'Ship col is: {ship_col}')
+
+
 guesses = False
 global guesses_left
 
@@ -155,8 +161,10 @@ def make_guesses():
     guesses_left = int(board_size) * 4 - 5
     while int(board_size) * 4 - 5 > 0 and guesses is False:
 
-        guess_row = input(f'\nGuess row between 1 and {board_size}:\n')
-        guess_col = input(f'\nGuess column between 1 and {board_size}:\n')
+        guess_row = input(f'\nEnter a number within\
+                    your board size range to guess the row:\n')
+        guess_col = input(f'\nEnter a number within\
+                    your board size range to guess the column:\n')
         print(f'\nNumber of guesses left: {guesses_left}\n')
 
         try:
@@ -167,13 +175,24 @@ def make_guesses():
         except IndexError:
             print('Oops, ship is out of the ocean!\n')
             continue
+
+            if guess_row.isalpha or guess_row.isalnum() is False:
+                raise ValueError
         except ValueError:
-            print(f'\n"{guess_row}" or "{guess_col}" is not a number.\n')
-            print('\nPlease check and try again!\n')
+            print(f'One or both of your guesses is not a number.\
+            Please check and try again!')
             continue
+
+            if guess_col.isalpha or guess_col.isalnum() is False:
+                raise ValueError
+        except ValueError:
+            print(f'One or both of your guesses is not a number.\
+            Please check and try again!')
+            continue
+
         else:
             pass
-          
+       
         """
         First condition is to check is whether user guessed
         row and column correctly. If randomly-generated
@@ -203,42 +222,35 @@ def make_guesses():
         If number of guesses is one, user loses.
         """
 
-        guess_correct = False
-        for hit_points in to_hit:
+        if ship_row == int(guess_row) and ship_col == int(guess_col):
+            board[int(guess_row)-1][int(guess_col)-1] = 'H'
+            print_board(board)
+            print('\nHit! Congratulations! You sank my battleship!\n')                        
+            guesses_left -= 1                         
+            print(f'\nNumber of guesses left: {guesses_left}\n')
 
-            if hit_points[0] == int(guess_row) \
-                and hit_points[1] == int(guess_col):
-                board[int(guess_row)-1][int(guess_col)-1] = 'H'
-                print_board(board)
-                #  print('\nHit! Congratulations! You sank my battleship!\n')
-                guesses_left -= 1
-                #  print(f'\nNumber of guesses left: {guesses_left}\n')
+            if board[int(guess_row)-1][int(guess_col)-1] == 'H':
+                print('GAME OVER!')
+                break
+        else:
 
-                if board[int(guess_row)-1][int(guess_col)-1] == 'H':
-                    to_hit.remove(hit_points)
-                    guess_correct = True
-                    print('\nHit! More to go!\n')
-                    break
-
-        if not guess_correct:
             if board[int(guess_row)-1][int(guess_col)-1] == 'H' \
                     or board[int(guess_row)-1][int(guess_col)-1] == 'X':
                 print_board(board)
                 print('\nYou have made that guess already!\n')
-                
+                if guesses_left == 1:
+                    print('GAME OVER!')
+                    break
             else:
                 board[int(guess_row)-1][int(guess_col)-1] = 'X'
                 print_board(board)
                 print('\nMiss!\n')
                 guesses_left -= 1
                 print(f'\nNumber of guesses left: {guesses_left}\n')
-                
-        if len(to_hit) == 0:
-            print('\nHit! Congratulations! You sank my battleship!\n')
-            break
-        if guesses_left == 1:
-            print('GAME OVER!')
-            break
+
+                if guesses_left == 1:
+                    print('GAME OVER!')
+                    break
 
 
 make_guesses()
