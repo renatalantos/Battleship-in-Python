@@ -18,6 +18,8 @@ global board
 board = []
 global ships_to_hit
 ships_to_hit = []
+global number_of_ships
+
 
 def random_row(board):
     """
@@ -44,14 +46,17 @@ def random_col(board):
     return randint(1, len(board))
 
 
-def create_hits(number_of_ships):
-  
+def create_targets(number_of_ships):
+    """
+    Creates targets in number of ships by running
+    through a for loop. Targets are intersections of rows and columns.
+    Row and column pairs are then appended to the ships_to_hit list
+    as list elements.
+    """
     for hits in range(number_of_ships):
         row = random_row(board)
         col = random_col(board)
         ships_to_hit.append([row, col])
-        print(f'Number of ships:{number_of_ships}')
-
 
 
 def build_board(board_size):
@@ -59,29 +64,34 @@ def build_board(board_size):
     Returns board as lists in brackets, separated by commas.
     Number of list elements depends on validated user input.
     """
-    
     return [['O' for i in range(int(board_size))]
             for i in range(int(board_size))]
-            
 
-def print_board(board):  # prints the board
 
+def print_board(board):
+    """
+    prints the board
+    """
     for b in board:
         print(*b)
 
 
 def to_calculate_hits(board):
-    number_of_ships = int(board_size) / 2
-    create_hits(int(number_of_ships))
-    print(ships_to_hit)
-    
+    """
+    Calculates the targets in the range of the ship
+    number size.
+    """
+    number_of_ships = math.floor(int(board_size) / 2)
+    create_targets(int(number_of_ships))
+    #  print(ships_to_hit) #  prints out the targets
 
 
 def validate_board_size(board_size):
     """
     Inside the try, user input will be converted from string value to integers.
     A ValueError is raised if a string cannot be converted to an integer,
-    or if the integer is outside the given range.
+    or if the integer is outside the given range. This information is then fed
+    back to the user.
     """
     try:
         if int(board_size) != 4 and int(board_size) != 6 \
@@ -98,12 +108,6 @@ def validate_board_size(board_size):
     return True
 
 
-"""
-Asks for user input to set the size of the board.
-The while loop will run until the user enters a valid input.
-"""
-
-
 while True:
     """
     The below code was originally in a function called set_board_size().
@@ -111,8 +115,10 @@ while True:
     whole programme, and declaring them as global variables only partially
     worked.
     Therefore, they are used within a while loop, which also has the
-    build_board()
-    and print_board() functions inside it.
+    build_board() and print_board() functions inside it to set the size of
+    the board.
+    Here user is asked  for user input.
+    The while loop will run until the user enters a valid input.
     """
     print('Choose number 4, 6, 8, 10 to set size of the board:\n')
     board_size = input('\nEnter your number here: \n')
@@ -124,12 +130,11 @@ while True:
         break               # single line with spaces.
 
 random_row(board)
-random_col(board) 
-
+random_col(board)
 
 guesses = False
 global guesses_left
-global number_of_ships
+
 
 def make_guesses():
     """
@@ -138,11 +143,17 @@ def make_guesses():
     Hits and misses are determinded by the available characters on the board,
     which will update after hits and misses.
     If user enters an invalid guess or has guessed the current intersection of
-    row and column already, the available guesses won't update.
+    row and column already, available guesses won't update.
     """
 
     guesses_left = int(board_size) * 4 - 5
     while int(board_size) * 4 - 5 > 0 and guesses is False:
+        """
+        Validation to check for invalid user input.
+        IndexError is raised and excepted if user enters a number outside
+        of the requested range and ValueError is raised and excepted if user
+        enters anything but a number.
+        """
 
         guess_row = input(f'\nGuess row between 1 and {board_size}:\n')
         guess_col = input(f'\nGuess column between 1 and {board_size}:\n')
@@ -165,12 +176,12 @@ def make_guesses():
           
         """
         First condition is to check is whether user guessed
-        row and column correctly. If randomly-generated
+        row and column correctly. 
+        The for loop in the first if checks is guessed row and guessed
+        column are indexes of the ships_to_hit list. 
         If randomly-generated ship_row and user's guess_row
-        and randomly-generated, ship_col and guess_col are intersected,
-        there is a hit. This is checked by the row and col serving
-        as indexes in the board[] list.
-        As there is only one ship, a hit is the end of the game.
+        are intersected, there is a hit. This is checked by 
+        the row and col serving as indexes in the board[] list.
         Message is displayed.
         """
         """
@@ -192,24 +203,30 @@ def make_guesses():
         If number of guesses is one, user loses.
         """
 
-        guess_correct = False
+        guess_correct = False # False is default
         for hit_ship in ships_to_hit:
-
-            if hit_ship[0] == int(guess_row) \
-                and hit_ship[1] == int(guess_col):
+            """ 
+            For loop iterates through the ships_to_hit list and
+            checks if index 0 in ships_to hit is equal to guessed row
+            and index [1] in ships_to_hit equal to guess row. If so, we have
+            a hit. Updated board is printed. This is necessary as we have more
+            than one ship.
+            """
+            if hit_ship[0] == int(guess_row) and hit_ship[1] == int(guess_col):
                 board[int(guess_row)-1][int(guess_col)-1] = 'H'
                 print_board(board)
-                #  print('\nHit! Congratulations! You sank my battleship!\n')
                 guesses_left -= 1
-                #  print(f'\nNumber of guesses left: {guesses_left}\n')
-
-                if board[int(guess_row)-1][int(guess_col)-1] == 'H':
-                    ships_to_hit.remove(hit_ship)
-                    guess_correct = True
-                    print('\nHit!')
-                    print(f'Number of ships left:{number_of_ships}')
-
-                    break
+            """
+            If the guessed row and column are equal to a H on the board,
+            the hit ship is removed from the ships_to_hit list.
+            User is informed, and remaining number of ships is displayed.
+            """
+            if board[int(guess_row)-1][int(guess_col)-1] == 'H':
+                ships_to_hit.remove(hit_ship)
+                guess_correct = True
+                print('\nHit!')
+                print("\nNumber of ships left:", len(ships_to_hit))
+                break
 
         if not guess_correct:
             if board[int(guess_row)-1][int(guess_col)-1] == 'H' \
@@ -225,7 +242,7 @@ def make_guesses():
                 print(f'\nNumber of guesses left: {guesses_left}\n')
                 
         if len(ships_to_hit) == 0:
-            print('\nHit! Congratulations! You sank my battleship!\n')
+            print('\nCongratulations! You sank my battleship!\n')
             break
         if guesses_left == 1:
             print('GAME OVER!')
