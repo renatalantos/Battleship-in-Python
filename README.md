@@ -55,16 +55,26 @@ Potential users would like to achieve the following:
 
 * Play a logic based game
 * Play the game on different difficuly levels
+* Be instructed about the rules
+* Be instructed about various steps
+* Be informed about their progress
+* Restart the game
 
-The game uses a very basic logic of elimination: once you guessed something and it was wrong, you shouldn't guess that again but move onto a next guess. 
+The game uses a very basic logic of elimination: once you guessed something and it was wrong, you shouldn't guess that again but move onto a next guess. However, as it is possible that the program generates identical random numbers, this is not always achieved. Users are informed about this in the inital welcome message. The welcome messages describes the general flow of the game.
+
+Users are instructed before and after each steps about what to do next. They are also informed about when the game ends. They are also informed about when they enter wrong input and they are prompted to try again. These are achieved by messages in the command line. 
+
+Users are also provided feedback about whether their guess was correct or incorrect, how many ships are remaining and the number of guesses remaining. These are also achived by messages in the command line.
 
 Different diffuculty levels are achieved by the different grid sizes.
 Possible grid sizes are 4 x 4, 6 x 6, 8 x 8, 10 x 10. They can be set by the initial user input.
 
+Restarting the game can be achieved if user clicks on the Restart Program button.
+
 
 # Layout
 
-My battleship is a very simple console based game. Only the mere instructions, user feedbacks and the grid at the different stages of the game is displayed. In future, I would like to display some ASCII graphics to make the game more attractive and to get learn more about graphics in Python.
+My battleship is a very simple console based game. Only the mere instructions, user feedbacks and the grid at the different stages of the game is displayed.
 
 [Battleship running in Heroku](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/user_loses.JPG)
 [Battleship running in IDLE](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/run_in_pyhton_idle.JPG) 
@@ -74,11 +84,15 @@ My battleship is a very simple console based game. Only the mere instructions, u
 # Features
 The game includes the following features:
 
-
+* Welcome graphics
+* Welcome message
 * Instructions for user
 * Feedback messages to user
 * Grid in various sizes
 * Grid elements O, X, H
+* Game over message
+
+
 The original grid is composed of O characters,
 which are updated either to X or H, depending on whether user hit or missed.
 * Updated messages to inform user where they are in the game.
@@ -105,7 +119,7 @@ The grid can be set to sizes 4 x 4, 6 x 6, 8 x 8 and 10 x 10. To do that, I take
 
 These are the elements of the grid. The grid is first displayed as a number of lists of O characters, which have been stripped of ' 's and []s by *b in the print_board(board) function.
 
-The while loop inside the make_guesses() function runs the validated user input for guess rows and guess columns (By while loop in the make_guesses() function). The first if statment inside the while loop checks whether the guess row and guess column provided by the user is identical with the random ship row and ship column numbers generated earlier by the def random_row(board) and def random(col) functions. If so, the intersection of the identical rows and columns updates to H on the board and the game ends by the user's win.
+The while loop inside the make_guesses() function runs the validated user input for guess rows and guess columns (By while loop in the make_guesses() function). The first if statment inside the while loop checks whether the guess row and guess column provided by the user is identical with the random ship row and ship column numbers generated earlier by the def random_row(board) and def random(col) functions. If so, the intersection of the identical rows and columns updates to H on the board and the game ends with the user's win.
 
 If after checking the first if statement the programme will proceed to the else statement if the above condition wasn't met. The the next possibility is that the user already guessed the row and column and was not successful. This is mapped out in the first if statement inside the else. If the previous guess row and column, which are represented as indices updated board[] list have already been guessed, the board element O was updated to X. If guess row and guess column intersection equal to this, then that intersection was already guessed.
 
@@ -113,18 +127,15 @@ The second else inside the else will do the final check, with the only remaining
 
 ### Updated messages to inform user where they are in the game
 
-Updating user is achieved by informing them about the remaining number of guesses, which are decremented with every incorrect guess. 
+Updating user is achieved by informing them about the remaining number of guesses and ships, which are decremented with every incorrect guess. 
 The message with the number of remaining guess will display every time user enters validated input. Guesses that have already been made are not penalized.
 
 
 ## Future features
-I would like to add ASCII graphics to the game to make it more attractive as playing in a console can be quite monotonous. 
 
-Also, I would like to add more ships, which I couldn't have achieved without running out of time on this occasion.
+Also, I would like to add more ships with different sizes.
 
-A welcome message should be added as well.
-
-A restart game option is needed, too, I think.
+I would also like to add a restart game option.
 
 
 
@@ -139,11 +150,13 @@ As this game has more of a logical structure than anything else, I think display
 4. If it invalid, user is prompted for input again until correct input is entered.
 5. User enters another input.
 6. It is either valid or not.
-7. If it is invalid, user is prompted for input again until correct input is entered.
+7. If it is invalid, user is prompted for input again until correct input is entered. (step 6)
 8. If it is valid, user either hits or misses.
-9. If user hits, user wins and game is over.
-10. If user misses, user is prompted for input again, the process restarts from step 5.
-11. If this is the last hit and user runs out of guesses, user loses and the game is over.
+9. If input is not valid, user is prmpted again. (step 6)
+9. If user hits and this is the last remaining ship, user wins.
+10. If user hits and this is not the last remaining ship user is prompted to play on.
+12. If user misses and there are ships left, user is prompted to guess again. 
+13. If this is the last hit and user runs out of guesses, user loses and the game is over.
 
 ## Flowchart
 
@@ -152,7 +165,7 @@ As this game has more of a logical structure than anything else, I think display
 ## Discrepancies with original ideas
 
 
-* I meant to implement ships of different sizes, number of ships would have been half of the board_size variable. Sizes would have been 1 to 5. Unfortunately, due to lack of time, this didn't happen. 
+* I meant to implement ships of different sizes, number of ships would have been half of the board_size variable. Sizes would have been 1 to 5. Unfortunately, i only have ships of size of 1 x 1. 
 
 * My make_guesses() function is quite big as I use both a while and a for loop inside it. I meant to use small and neat functions but unfortunatley my validation only works this way. It is one of my goals to perfect my function skills.
 
@@ -208,19 +221,34 @@ As this game has more of a logical structure than anything else, I think display
   
   [PEP8 Warning messages after fourth validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20fourth%20validation.JPG)
 
+  [PEP8 Warning messages after fourth validation]()
+
 
 
 ## Bugs, Issues
 
-There is a while loop in the main body of the function, which was meant to be in a function, instead it calls two other functions.
-My make_guesses() function is quite big as I use both a while and a for loop inside it. I meant to use small and neat functions but unfortunatley my validation only works this way.
-As the code is quite simple, my main issue was with validating user input. 
+* There is a while loop in the main body of the function, which was meant to be in a function, instead it calls two other functions.
+My make_guesses() function is quite big as I use both a while and a for loop inside it. I meant to use small and neat functions but my validation only works this way.
+
+
+* As the code is quite simple, my main issue was with validating user input. 
 It took my a while to understand what try, raise ValueError, except ValueError does. Setting up conditions for valuerrors meant battling with syntax and logical errors as well. I raise both ValueErrors and IndexErrors in the code for two separate inputs, too. Catching them inside one block and putting this code inside my while loop in the making_guesses() function was the hardest part of my project I think. It still doesn't work 100% efficiently, unfortunately.
 You probably notice that I use fairly generic error messages when I validate user input for guess row and guess column. The reason for that is that I tried to return the actual input in a print statement, in the block of code on lines 163 and 175 the first if statement's ValueError message showed in the second one and it is the same between if statements on line 153 and 163 - first one showed in the second.
 
-Inside the same code, starting on the if statements, there is a GitPod error message shown: Unreachable code. However, this doesn't show in PEP8 and the code works.
+Inside the same code, starting on the if statements, there is a GitPod error message shown: Unreachable code. However, this didn't show in PEP8 and the code worked.
 
 [Unreachable code](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/unreachable%20code.JPG)
+
+I resolved this by taking out the if statements from the from the ValueErrors.
+
+
+* As I have multiple 1 x 1 ships and I get their coordinates by generating random in numbers in the range of 1 and the board size, it is possible that sometimes two identical numbers for rows and columns are generated. I tried to write code to catch this when it happens so that I can inform the user by decrementing the number of ships so that user is not mislead into thinking that they got all ships wnen there are duplicates. I probably got off the wrong track altogether as my point was the the ships_to_hit list, to which the randomly gnerated row and column numbers (for ship) are added, has indexes from pairs of these numbers. For example ship_to_hit[1] could be [2,3], 2 for row and 3 for column. It is possible so that ship_to_hit looks like this: ship_to_hit[[2,3], [2,3]]
+I tried to use a for loop to iterate throgh the indices of ships_to_hit and eliminate duplicates or to restart by putting the function inside itself, inside an if statement, however this didn't work. The former ended in the error message: unhashable type list and the letter in a RecursionError.
+
+To at least inform the user of the possibility of duplicate ships, I explain this in the Welcome message.
+
+[Error: Unhashable Type List]()
+[Error: RecursionError]()
  
 
 
@@ -271,6 +299,9 @@ I used various resources to create the program.
 
 For the original flowchart, I used the following chart: [Original Flowchart](https://github.com/farhathfaisal/battleship) . However, I later recreated it by my own logic.
 
+I used this site to get the idea how to print the board:
+[Board printing](https://bigmonty12.github.io/battleship)
+
 To make sure I know how battleship is played I used the following video: [Battleship video idea](https://www.youtube.com/watch?v=hkKw-7aOjj8)
 
 I used this codecademy video to build up the basic sructure: [Codecamedy video for design](
@@ -287,8 +318,14 @@ This StackOverFlow thread helped me resolve my validation issues:
 For validation, I also looked up the Love Sandwiches walkthrough project by CI.
 
 This StackOverFlow thread helped me shorten my lines for PEP8 validation:
-[StackOverFlow: Line Too Long](https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation
-)
+[StackOverFlow: Line Too Long](https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation)
+
+I looked up this site when I had trouble decrementing my ship numbers
+[Decrement ship numbers](https://discuss.codecademy.com/t/excellent-battleship-game-written-in-python/430605)
+
+For the graphics I used the following site: 
+[Graphics](http://patorjk.com/software/taag/#p=display&h=0&v=3&f=Slide&t=Battleship%0A graphics)
+Copyright info is Slide.flf (C) 1994 by Victor Parada (vparada@inf.utfsm.cl) 94/08/18.
 
 
 

@@ -46,7 +46,7 @@ def print_end():
 
 
 def print_welcome():
-    print("~~~~~~~~~~~ LET'S PLAY BATTLESHIP! ~~~~~~~~~~~\n")
+    print("\n~~~~~~~~~~~ LET'S PLAY BATTLESHIP! ~~~~~~~~~~~\n")
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
     print('* Welcome. I hope you will enjoy this basic battleship game.')
     print('* Please take a second to read what you need to know to play.')
