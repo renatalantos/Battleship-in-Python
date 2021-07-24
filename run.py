@@ -16,8 +16,8 @@ Validate user input
 
 global board
 board = []
-global to_hit
-to_hit = []
+global ships_to_hit
+ships_to_hit = []
 
 def random_row(board):
     """
@@ -44,12 +44,13 @@ def random_col(board):
     return randint(1, len(board))
 
 
-def create_hits(number_of_hits):
+def create_hits(number_of_ships):
   
-    for hits in range(number_of_hits):
+    for hits in range(number_of_ships):
         row = random_row(board)
         col = random_col(board)
-        to_hit.append([row, col])
+        ships_to_hit.append([row, col])
+        print(f'Number of ships:{number_of_ships}')
 
 
 
@@ -69,10 +70,11 @@ def print_board(board):  # prints the board
         print(*b)
 
 
-def to_calc_hits(board):
-    number_of_hits = int(board_size) / 2
-    create_hits(int(number_of_hits))
-    print(to_hit)
+def to_calculate_hits(board):
+    number_of_ships = int(board_size) / 2
+    create_hits(int(number_of_ships))
+    print(ships_to_hit)
+    
 
 
 def validate_board_size(board_size):
@@ -117,22 +119,9 @@ while True:
     if validate_board_size(board_size):
         print(f'\nYour board size is {board_size} x {board_size}.\n')
         board = build_board(board_size)
-        to_calc_hits(board)
+        to_calculate_hits(board)
         print_board(board)  # * enables list elements to be printed on a
         break               # single line with spaces.
-
-
-def set_number_of_ships():
-    """
-    Sets number of ships based on board_size.
-    """
-    global number_of_ships
-    number_of_ships = math.floor(int(board_size) / 2)
-    #  print(f'\nNumber of ships is {number_of_ships}.\n')
-
-
-set_number_of_ships()
-
 
 random_row(board)
 random_col(board) 
@@ -140,7 +129,7 @@ random_col(board)
 
 guesses = False
 global guesses_left
-
+global number_of_ships
 
 def make_guesses():
     """
@@ -204,10 +193,10 @@ def make_guesses():
         """
 
         guess_correct = False
-        for hit_points in to_hit:
+        for hit_ship in ships_to_hit:
 
-            if hit_points[0] == int(guess_row) \
-                and hit_points[1] == int(guess_col):
+            if hit_ship[0] == int(guess_row) \
+                and hit_ship[1] == int(guess_col):
                 board[int(guess_row)-1][int(guess_col)-1] = 'H'
                 print_board(board)
                 #  print('\nHit! Congratulations! You sank my battleship!\n')
@@ -215,9 +204,11 @@ def make_guesses():
                 #  print(f'\nNumber of guesses left: {guesses_left}\n')
 
                 if board[int(guess_row)-1][int(guess_col)-1] == 'H':
-                    to_hit.remove(hit_points)
+                    ships_to_hit.remove(hit_ship)
                     guess_correct = True
-                    print('\nHit! More to go!\n')
+                    print('\nHit!')
+                    print(f'Number of ships left:{number_of_ships}')
+
                     break
 
         if not guess_correct:
@@ -233,7 +224,7 @@ def make_guesses():
                 guesses_left -= 1
                 print(f'\nNumber of guesses left: {guesses_left}\n')
                 
-        if len(to_hit) == 0:
+        if len(ships_to_hit) == 0:
             print('\nHit! Congratulations! You sank my battleship!\n')
             break
         if guesses_left == 1:
