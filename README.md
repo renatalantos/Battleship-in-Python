@@ -1,6 +1,6 @@
 # Milestone Project 3 - Battleship in Python
-![image]()
-![image]()
+![Start page](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/Screenshot%20start%20page%20Idle.JPG)
+![Game over](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/game%20over%20Idle.JPG)
 
 ## Table of Contents
 
