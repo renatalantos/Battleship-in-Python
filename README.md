@@ -1,5 +1,6 @@
 # Milestone Project 3 - Battleship in Python
-![image](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/user_wins.JPG)
+![image]()
+![image]()
 
 ## Table of Contents
 
@@ -196,7 +197,8 @@ As this game has more of a logical structure than anything else, I think display
 
  ## Validation 
 
-  The run.py file passed the PEP8 validator with 5 warning messages about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format. Editor: Rulers in GitPod settings to check line length.
+  The run.py file passed the PEP8 validator with 5 warning messages about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format. I resolved this creating shorter senetnces for user prompts.
+  Editor: Rulers in GitPod settings to check line length.
 
   [Display line in Python after using \ to shorten row](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/guessed_already.JPG)
 
@@ -221,7 +223,7 @@ As this game has more of a logical structure than anything else, I think display
   
   [PEP8 Warning messages after fourth validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20fourth%20validation.JPG)
 
-  [PEP8 Warning messages after fourth validation]()
+  [PEP8 Warning messages after fourth validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20fifth%20validation.JPG)
 
 
 
@@ -237,9 +239,10 @@ You probably notice that I use fairly generic error messages when I validate use
 
 Inside the same code, starting on the if statements, there is a GitPod error message shown: Unreachable code. However, this didn't show in PEP8 and the code worked.
 
+I resolved this by taking out the if statements from the from the ValueErrors.
+
 [Unreachable code](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/unreachable%20code.JPG)
 
-I resolved this by taking out the if statements from the from the ValueErrors.
 
 
 * As I have multiple 1 x 1 ships and I get their coordinates by generating random in numbers in the range of 1 and the board size, it is possible that sometimes two identical numbers for rows and columns are generated. I tried to write code to catch this when it happens so that I can inform the user by decrementing the number of ships so that user is not mislead into thinking that they got all ships wnen there are duplicates. I probably got off the wrong track altogether as my point was the the ships_to_hit list, to which the randomly gnerated row and column numbers (for ship) are added, has indexes from pairs of these numbers. For example ship_to_hit[1] could be [2,3], 2 for row and 3 for column. It is possible so that ship_to_hit looks like this: ship_to_hit[[2,3], [2,3]]
@@ -247,8 +250,8 @@ I tried to use a for loop to iterate throgh the indices of ships_to_hit and elim
 
 To at least inform the user of the possibility of duplicate ships, I explain this in the Welcome message.
 
-[Error: Unhashable Type List]()
-[Error: RecursionError]()
+[Error: Unhashable Type List](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/Error%20unhashable%20type%20list.JPG)
+[Error: RecursionError](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/recalc.JPG)
  
 
 
