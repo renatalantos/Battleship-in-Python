@@ -285,6 +285,7 @@ def make_guesses():
                 print('\nMiss!\n')
                 guesses_left -= 1
                 print(f'\nNumber of guesses left: {guesses_left}\n')
+                print("\nNumber of ships left:", len(ships_to_hit))
         if len(ships_to_hit) == 0:
             print('\nCongratulations! You all sank my battleships!\n')
             print_end()
