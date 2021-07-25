@@ -203,9 +203,9 @@ As this game has more of a logical structure than anything else, I think display
 
  ## Validation 
 
-  The run.py file passed the PEP8 validator with 1 warning message about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format. I resolved this creating shorter senetnces for user prompts.
-  Editor: Rulers in GitPod settings to check line length.
+  The run.py file passed the PEP8 validator with 1 warning message about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format. I resolved this creating shorter senetnces for user prompts. Also common errors and warnings were too many blank lines and indentation. I used to check the length of the line by going into GitPod settings - > Editor: Rulers in GitPod settings to check line length.
 
+  
   [Display line in Python after using \ to shorten row](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/guessed_already.JPG)
 
   [Display line in Idle after using \ to shorten row](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/run_in_pyhton_idle.JPG)
