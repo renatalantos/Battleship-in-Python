@@ -48,6 +48,7 @@ This game has multiple one-sized ships. The ships can be next to each other, tho
 * Owner goals
 
 The owners of the product is the programmer who would like to showcase her skills for users, fellow programmers and prospective employers. 
+I would also like to create an enjoyable user experience.
 
 
 * User goals
@@ -92,6 +93,7 @@ The game includes the following features:
 * Grid in various sizes
 * Grid elements O, X, H
 * Game over message
+* Game over grapics
 
 
 The original grid is composed of O characters,
@@ -109,6 +111,8 @@ Error message for user [Error message for non-alphanumerical input](https://gith
 The feedback messages are displayed after validation, let validation be successful or not. They reconfirm what input is wanted or whether input has been accepted.
 
 Error message for user [Error message for input out of range](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/error_message_not_in_range.JPG)
+
+
 
 Confirmation for user [Ok to play](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/ok%20to%20play.JPG)
 
@@ -134,9 +138,11 @@ The message with the number of remaining guess will display every time user ente
 
 ## Future features
 
-Also, I would like to add more ships with different sizes.
+I would like to add more ships with different sizes.
 
 I would also like to add a restart game option.
+
+I would like to avoid duplicate ships.
 
 
 
@@ -166,7 +172,7 @@ As this game has more of a logical structure than anything else, I think display
 ## Discrepancies with original ideas
 
 
-* I meant to implement ships of different sizes, number of ships would have been half of the board_size variable. Sizes would have been 1 to 5. Unfortunately, i only have ships of size of 1 x 1. 
+* I meant to implement ships of different sizes, number of ships would have been half of the board_size variable. Sizes would have been 1 to 5. Unfortunately, I only have ships of size of 1 x 1. 
 
 * My make_guesses() function is quite big as I use both a while and a for loop inside it. I meant to use small and neat functions but unfortunatley my validation only works this way. It is one of my goals to perfect my function skills.
 
@@ -197,7 +203,7 @@ As this game has more of a logical structure than anything else, I think display
 
  ## Validation 
 
-  The run.py file passed the PEP8 validator with 5 warning messages about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format. I resolved this creating shorter senetnces for user prompts.
+  The run.py file passed the PEP8 validator with 1 warning message about trailing white spaces. (I could not delete these) Previously the errors mostly related to the length of the lines which I resolved by using \ Also common errors and warnings were too many blank lines and indentation. However, in GitPod and Heroku, this adds extra empty spaces within the lines, whereas in Idle there is no difference to the format. I resolved this creating shorter senetnces for user prompts.
   Editor: Rulers in GitPod settings to check line length.
 
   [Display line in Python after using \ to shorten row](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/guessed_already.JPG)
@@ -213,8 +219,6 @@ As this game has more of a logical structure than anything else, I think display
   [PEP8 Warning messages after first validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20first%20validation.JPG)
 
 
-
-
   [PEP8 Warning messages after second validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20second%20validation.JPG)
 
 
@@ -222,8 +226,9 @@ As this game has more of a logical structure than anything else, I think display
 
   
   [PEP8 Warning messages after fourth validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20fourth%20validation.JPG)
+  
 
-  [PEP8 Warning messages after fourth validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20fifth%20validation.JPG)
+  [PEP8 Warning messages after fifth validation](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/PEP8%20screenshot%20after%20fifth%20validation.JPG)
 
 
 
@@ -233,11 +238,13 @@ As this game has more of a logical structure than anything else, I think display
 My make_guesses() function is quite big as I use both a while and a for loop inside it. I meant to use small and neat functions but my validation only works this way.
 
 
-* As the code is quite simple, my main issue was with validating user input. 
+* One of my main issues was with validating user input. 
 It took my a while to understand what try, raise ValueError, except ValueError does. Setting up conditions for valuerrors meant battling with syntax and logical errors as well. I raise both ValueErrors and IndexErrors in the code for two separate inputs, too. Catching them inside one block and putting this code inside my while loop in the making_guesses() function was the hardest part of my project I think. It still doesn't work 100% efficiently, unfortunately.
+
+
 You probably notice that I use fairly generic error messages when I validate user input for guess row and guess column. The reason for that is that I tried to return the actual input in a print statement, in the block of code on lines 163 and 175 the first if statement's ValueError message showed in the second one and it is the same between if statements on line 153 and 163 - first one showed in the second.
 
-Inside the same code, starting on the if statements, there is a GitPod error message shown: Unreachable code. However, this didn't show in PEP8 and the code worked.
+Inside the same code, starting on the if statements, there was a GitPod error message shown: Unreachable code. However, this didn't show in PEP8 and the code worked.
 
 I resolved this by taking out the if statements from the from the ValueErrors.
 
@@ -250,7 +257,11 @@ I tried to use a for loop to iterate throgh the indices of ships_to_hit and elim
 
 To at least inform the user of the possibility of duplicate ships, I explain this in the Welcome message.
 
+
+
 [Error: Unhashable Type List](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/Error%20unhashable%20type%20list.JPG)
+
+
 [Error: RecursionError](https://github.com/renatalantos/Battleship-in-Python/blob/main/documents/screenshots/recalc.JPG)
  
 
@@ -326,8 +337,13 @@ This StackOverFlow thread helped me shorten my lines for PEP8 validation:
 I looked up this site when I had trouble decrementing my ship numbers
 [Decrement ship numbers](https://discuss.codecademy.com/t/excellent-battleship-game-written-in-python/430605)
 
+
+## Graphics
+
 For the graphics I used the following site: 
 [Graphics](http://patorjk.com/software/taag/#p=display&h=0&v=3&f=Slide&t=Battleship%0A graphics)
+
+
 Copyright info is Slide.flf (C) 1994 by Victor Parada (vparada@inf.utfsm.cl) 94/08/18.
 
 
